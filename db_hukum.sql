@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 28 Mar 2019 pada 14.42
+-- Generation Time: 29 Mar 2019 pada 13.54
 -- Versi Server: 5.7.25-0ubuntu0.16.04.2
 -- PHP Version: 7.2.16-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -36,6 +36,17 @@ CREATE TABLE `tbl_catatan` (
   `catatan_staff` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `tbl_catatan`
+--
+
+INSERT INTO `tbl_catatan` (`id`, `tgl_masuk`, `kode_voucher`, `nama`, `catatan_user`, `catatan_admin`, `catatan_staff`) VALUES
+(1, '2019-03-29 00:33:39', 'uj0wMJ', NULL, ' Catatan 1', NULL, NULL),
+(2, '2019-03-29 00:34:22', 'uj0wMJ', 'Yola', NULL, 'Catatan admin', NULL),
+(3, '2019-03-29 00:50:50', 'OLJFgG', NULL, ' Kirim Email', NULL, NULL),
+(4, '2019-03-29 00:51:14', 'OLJFgG', NULL, ' Ada email ga ?', NULL, NULL),
+(5, '2019-03-29 00:51:55', 'OLJFgG', NULL, ' Tes Ada Email ga ?', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -61,6 +72,14 @@ CREATE TABLE `tbl_new_job` (
   `status_inbox_staff` enum('0','1','2') NOT NULL DEFAULT '0',
   `status_pembaharuan_staff` enum('0','1','2') DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_new_job`
+--
+
+INSERT INTO `tbl_new_job` (`kode_voucher`, `email`, `unit_kerja`, `judul_dokumen`, `catatan`, `tanggal_buat`, `tanggal_selesai`, `status`, `tgl_mulai_kerja`, `tgl_selesai_kerja`, `catatan_admin`, `catatan_staff`, `nama_staff`, `status_job`, `status_pending`, `status_inbox_staff`, `status_pembaharuan_staff`) VALUES
+('OLJFgG', 'sandikaka606@gmail.com', 'Pengembangan Bisnis dan Produksi', 'Tes Email', ' Tes Ada Email ga ?', '2019-03-29 00:50:50', '2019-04-01 07:50:50', '2', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0'),
+('uj0wMJ', 'irc.kakax@yahoo.co.id', 'Sekretaris Perusahaan', 'Tes Dokumen', ' Catatan 1', '2019-03-29 00:33:39', '2019-04-01 07:33:39', '1', '2019-03-29 07:33:52', '2019-04-01 07:34:22', 'Catatan admin', NULL, 'Yola', '2', '0', '2', '1');
 
 -- --------------------------------------------------------
 
@@ -113,7 +132,12 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`nama_user`, `nipeg_user`, `divisi_user`, `bagian_user`, `foto_user`, `level`, `username`, `password`, `job_title`) VALUES
 ('Shandika Eka Putra', '123345', 'HCMQ', 'IT', 'shandika.jpg', 'admin', 'admin', '020a7e945fde6331c1e667b757015f05a0862aaf', 'Web'),
-('Yola', '1233546', 'HCMQ', 'IT', 'yola.jpg', 'staff', 'yola', 'b51a7cdd2ee7d114227a1ec1ec31a98e6c7d9eb4', 'Web');
+('Yola', '1233546', 'HCMQ', 'IT', 'yola.jpg', 'staff', 'yola', 'b51a7cdd2ee7d114227a1ec1ec31a98e6c7d9eb4', 'Web'),
+('MOHAMAD ADITYA', 'PK.201812001', 'Sekretaris Perusahaan', 'Hukum', NULL, 'staff', 'aditya', '5d1852d43efe8f6e393448a3b4d1cd98a4cfd56f', 'null'),
+('NADYA ARRIZKA HUTAMI', 'PK.201812002', 'Sekretaris Perusahaan', 'Hukum', NULL, 'staff', 'nadya', '05cfb17b1fdd9c04f1d259eacec250a63b211222', 'null'),
+('PUTTY OCTAVIANY PURWADIPUTRI', 'PP.201005001', 'Sekretaris Perusahaan', 'Hukum', NULL, 'staff', 'putty', '4fee5a2bfb0edcb3d0f8d955bd6f1c8860b305ae', 'null'),
+('RADEN SITI SARI DEWI', 'PP.201202022', 'Sekretaris Perusahaan', 'Hukum', NULL, 'staff', 'sari', 'bbde9ba3c334de9ac817aa0264edb8b9b1eabe72', 'null'),
+('EZRA LONTOH', 'PP200912001', 'Sekretaris Perusahaan', 'Hukum', NULL, 'admin', 'ezra', '9fd00e132efa4424ee4d0c3efa584ea43b66f114', 'null');
 
 --
 -- Indexes for dumped tables
@@ -156,7 +180,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_catatan`
 --
 ALTER TABLE `tbl_catatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_unit_kerja`
 --
