@@ -40,6 +40,7 @@
         <center><img src="<?php echo base_url().'public/images/Logo-PT-INTI_237-design.png'; ?>" width="200px"></center>
           <section class="login_content">
             <a class="btn btn-default" href="<?php echo base_url('login');?>">Log in Admin</a>
+            <a class="btn btn-default" href="<?php echo base_url('user/c_user/lihatData');?>">Lihat Data</a>
             <form name="form_job" action="<?php echo base_url('user/c_user/order_job');?>" method="post">              
               <div>
                 <select class="form-control" name="uk" id="uk" />
