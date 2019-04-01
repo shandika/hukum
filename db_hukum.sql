@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: 29 Mar 2019 pada 13.54
--- Versi Server: 5.7.25-0ubuntu0.16.04.2
--- PHP Version: 7.2.16-1+ubuntu16.04.1+deb.sury.org+1
+-- Host: 127.0.0.1
+-- Generation Time: Apr 01, 2019 at 09:46 AM
+-- Server version: 10.1.22-MariaDB
+-- PHP Version: 7.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_catatan`
+-- Table structure for table `tbl_catatan`
 --
 
 CREATE TABLE `tbl_catatan` (
@@ -37,7 +39,7 @@ CREATE TABLE `tbl_catatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_catatan`
+-- Dumping data for table `tbl_catatan`
 --
 
 INSERT INTO `tbl_catatan` (`id`, `tgl_masuk`, `kode_voucher`, `nama`, `catatan_user`, `catatan_admin`, `catatan_staff`) VALUES
@@ -50,7 +52,7 @@ INSERT INTO `tbl_catatan` (`id`, `tgl_masuk`, `kode_voucher`, `nama`, `catatan_u
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_new_job`
+-- Table structure for table `tbl_new_job`
 --
 
 CREATE TABLE `tbl_new_job` (
@@ -74,7 +76,7 @@ CREATE TABLE `tbl_new_job` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_new_job`
+-- Dumping data for table `tbl_new_job`
 --
 
 INSERT INTO `tbl_new_job` (`kode_voucher`, `email`, `unit_kerja`, `judul_dokumen`, `catatan`, `tanggal_buat`, `tanggal_selesai`, `status`, `tgl_mulai_kerja`, `tgl_selesai_kerja`, `catatan_admin`, `catatan_staff`, `nama_staff`, `status_job`, `status_pending`, `status_inbox_staff`, `status_pembaharuan_staff`) VALUES
@@ -84,7 +86,7 @@ INSERT INTO `tbl_new_job` (`kode_voucher`, `email`, `unit_kerja`, `judul_dokumen
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_unit_kerja`
+-- Table structure for table `tbl_unit_kerja`
 --
 
 CREATE TABLE `tbl_unit_kerja` (
@@ -93,7 +95,7 @@ CREATE TABLE `tbl_unit_kerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_unit_kerja`
+-- Dumping data for table `tbl_unit_kerja`
 --
 
 INSERT INTO `tbl_unit_kerja` (`id_uk`, `nama_unit_kerja`) VALUES
@@ -111,7 +113,7 @@ INSERT INTO `tbl_unit_kerja` (`id_uk`, `nama_unit_kerja`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_user`
+-- Table structure for table `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -127,17 +129,17 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_user`
+-- Dumping data for table `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`nama_user`, `nipeg_user`, `divisi_user`, `bagian_user`, `foto_user`, `level`, `username`, `password`, `job_title`) VALUES
 ('Shandika Eka Putra', '123345', 'HCMQ', 'IT', 'shandika.jpg', 'admin', 'admin', '020a7e945fde6331c1e667b757015f05a0862aaf', 'Web'),
 ('Yola', '1233546', 'HCMQ', 'IT', 'yola.jpg', 'staff', 'yola', 'b51a7cdd2ee7d114227a1ec1ec31a98e6c7d9eb4', 'Web'),
-('MOHAMAD ADITYA', 'PK.201812001', 'Sekretaris Perusahaan', 'Hukum', NULL, 'staff', 'aditya', '5d1852d43efe8f6e393448a3b4d1cd98a4cfd56f', 'null'),
-('NADYA ARRIZKA HUTAMI', 'PK.201812002', 'Sekretaris Perusahaan', 'Hukum', NULL, 'staff', 'nadya', '05cfb17b1fdd9c04f1d259eacec250a63b211222', 'null'),
-('PUTTY OCTAVIANY PURWADIPUTRI', 'PP.201005001', 'Sekretaris Perusahaan', 'Hukum', NULL, 'staff', 'putty', '4fee5a2bfb0edcb3d0f8d955bd6f1c8860b305ae', 'null'),
-('RADEN SITI SARI DEWI', 'PP.201202022', 'Sekretaris Perusahaan', 'Hukum', NULL, 'staff', 'sari', 'bbde9ba3c334de9ac817aa0264edb8b9b1eabe72', 'null'),
-('EZRA LONTOH', 'PP200912001', 'Sekretaris Perusahaan', 'Hukum', NULL, 'admin', 'ezra', '9fd00e132efa4424ee4d0c3efa584ea43b66f114', 'null');
+('MOHAMAD ADITYA', 'PK.201812001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'aditya', '5d1852d43efe8f6e393448a3b4d1cd98a4cfd56f', 'null'),
+('NADYA ARRIZKA HUTAMI', 'PK.201812002', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'nadya', '05cfb17b1fdd9c04f1d259eacec250a63b211222', 'null'),
+('PUTTY OCTAVIANY PURWADIPUTRI', 'PP.201005001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'putty', '4fee5a2bfb0edcb3d0f8d955bd6f1c8860b305ae', 'null'),
+('RADEN SITI SARI DEWI', 'PP.201202022', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'sari', 'bbde9ba3c334de9ac817aa0264edb8b9b1eabe72', 'null'),
+('EZRA LONTOH', 'PP200912001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'admin', 'ezra', '9fd00e132efa4424ee4d0c3efa584ea43b66f114', 'null');
 
 --
 -- Indexes for dumped tables
@@ -187,21 +189,22 @@ ALTER TABLE `tbl_catatan`
 ALTER TABLE `tbl_unit_kerja`
   MODIFY `id_uk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tbl_catatan`
+-- Constraints for table `tbl_catatan`
 --
 ALTER TABLE `tbl_catatan`
   ADD CONSTRAINT `tbl_catatan_ibfk_1` FOREIGN KEY (`kode_voucher`) REFERENCES `tbl_new_job` (`kode_voucher`),
   ADD CONSTRAINT `tbl_catatan_ibfk_2` FOREIGN KEY (`nama`) REFERENCES `tbl_user` (`nama_user`);
 
 --
--- Ketidakleluasaan untuk tabel `tbl_new_job`
+-- Constraints for table `tbl_new_job`
 --
 ALTER TABLE `tbl_new_job`
   ADD CONSTRAINT `tbl_new_job_ibfk_1` FOREIGN KEY (`unit_kerja`) REFERENCES `tbl_unit_kerja` (`nama_unit_kerja`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
