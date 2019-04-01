@@ -4,8 +4,10 @@
                     $level = $this->session->userdata('level');
                     if ($level == "admin") {
                       $this->load->view('layout/template_admin');
-                    } else{
+                    } elseif($level == "staff"){
                       $this->load->view('layout/template_staff');
+                    } else {
+                      $this->load->view('layout/template_user');
                     }
                  ?>
             <!-- /Template -->
