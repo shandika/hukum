@@ -7,6 +7,8 @@ class C_user extends CI_Controller {
     {
 		parent::__construct();
         $this->load->library('form_validation');
+        $this->load->model('model_user','m_user');
+        $this->load->model('model_admin','m_admin');
     }
 
 	function index()
@@ -62,5 +64,27 @@ class C_user extends CI_Controller {
             }
         }
 	}
+
+    function lihatData()
+    {               
+        $data['unit']=$this->m_user->get_unit_kerja();    
+        $data['data']=$this->m_user->get_all_dokumen();
+        $data['title'] = "Data";
+        $data['subtitle'] = "Job";
+        $data['view_isi'] = "data_job";
+        $this->load->view('layout/template_user', $data);     
+    } 
+
+    function get_job_detail(){
+        $data['staff']=$this->m_admin->staff();
+        $kode=$this->uri->segment(4);
+        $data['catatan']=$this->m_admin->catatan($kode);
+        $kode=$this->uri->segment(4);
+        $data['data']=$this->m_admin->get_job_by_kode($kode);
+        $data['title'] = "Job";
+        $data['subtitle'] = "Detail";
+        $data['view_isi'] = "data_job_detail";
+        $this->load->view('layout/template_user',$data);
+    }   
 }
 ?>
