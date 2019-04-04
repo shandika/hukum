@@ -11,6 +11,10 @@ class Model_admin extends CI_Model {
         $hsl=$this->db->query("SELECT * FROM tbl_user WHERE level='staff' ORDER BY nama_user ASC");
         return $hsl;
     }
+    function get_all_users(){
+        $hsl=$this->db->query("SELECT * FROM tbl_user ORDER BY nama_user ASC");
+        return $hsl;
+    }
     function get_staff_by_kode($kode){
         $hsl=$this->db->query("SELECT * FROM tbl_user where nipeg_user='$kode'");
         return $hsl;
@@ -68,6 +72,22 @@ class Model_admin extends CI_Model {
         $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,nama,catatan_admin) values ('$kode','$admin','$catatanadmin')");
         return $hsl;
     }
+    function simpan_user($nama,$nipeg,$divisi,$bagian,$level,$username,$p,$gambar){
+        $hsl=$this->db->query("insert into tbl_user(nama_user,nipeg_user,divisi_user,bagian_user,foto_user,level,username,password) values ('$nama','$nipeg','$divisi','$bagian','$gambar','$level','$username','$p')");
+        return $hsl;
+    }
+    function update_user($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$p,$gambar){
+        $hsl=$this->db->query("update tbl_user set nama_user='$nama',nipeg_user='$nipeg',divisi_user='$divisi',bagian_user='$bagian',foto_user='$gambar',level='$level',username='$username',password='$p' where nipeg_user='$nipeg_user'");
+        return $hsl;
+    }
+    function update_user_tanpa_gambar($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$p){
+        $hsl=$this->db->query("update tbl_user set nama_user='$nama',nipeg_user='$nipeg',divisi_user='$divisi',bagian_user='$bagian',level='$level',username='$username',password='$p' where nipeg_user='$nipeg_user'");
+        return $hsl;
+    }
+    function hapus_user($kode){
+       $hsl=$this->db->query("delete from tbl_user where nipeg_user='$kode'");
+        return $hsl;
+    }
     function staff(){
         $this->db->order_by('nipeg_user','ASC');
         $this->db->where('level','staff');
@@ -77,5 +97,10 @@ class Model_admin extends CI_Model {
     function catatan($kode){
         $hsl=$this->db->query("SELECT tbl_catatan.*,DATE_FORMAT(tgl_masuk,'%d %M %Y %h%:%i%:%s') AS tgl FROM tbl_catatan WHERE kode_voucher='$kode' ORDER BY tgl_masuk ASC");
         return $hsl;
+    }
+    function get_unit_kerja(){
+        $this->db->order_by('id_uk','ASC');
+        $unit= $this->db->get('tbl_unit_kerja');
+        return $unit->result_array();
     }
 }
