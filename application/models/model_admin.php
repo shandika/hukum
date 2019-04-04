@@ -76,12 +76,12 @@ class Model_admin extends CI_Model {
         $hsl=$this->db->query("insert into tbl_user(nama_user,nipeg_user,divisi_user,bagian_user,foto_user,level,username,password) values ('$nama','$nipeg','$divisi','$bagian','$gambar','$level','$username','$p')");
         return $hsl;
     }
-    function update_user($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$p,$gambar){
-        $hsl=$this->db->query("update tbl_user set nama_user='$nama',nipeg_user='$nipeg',divisi_user='$divisi',bagian_user='$bagian',foto_user='$gambar',level='$level',username='$username',password='$p' where nipeg_user='$nipeg_user'");
+    function update_user($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$password,$gambar){
+        $hsl=$this->db->query("update tbl_user set nama_user='$nama',nipeg_user='$nipeg',divisi_user='$divisi',bagian_user='$bagian',foto_user='$gambar',level='$level',username='$username',password='$password' where nipeg_user='$nipeg_user'");
         return $hsl;
     }
-    function update_user_tanpa_gambar($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$p){
-        $hsl=$this->db->query("update tbl_user set nama_user='$nama',nipeg_user='$nipeg',divisi_user='$divisi',bagian_user='$bagian',level='$level',username='$username',password='$p' where nipeg_user='$nipeg_user'");
+    function update_user_tanpa_gambar($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$password){
+        $hsl=$this->db->query("update tbl_user set nama_user='$nama',nipeg_user='$nipeg',divisi_user='$divisi',bagian_user='$bagian',level='$level',username='$username',password='$password' where nipeg_user='$nipeg_user'");
         return $hsl;
     }
     function hapus_user($kode){
