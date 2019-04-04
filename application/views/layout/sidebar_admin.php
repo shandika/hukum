@@ -21,5 +21,6 @@
                   </li>
                   <li title="Dokumen Monitoring"><a href="<?php echo base_url('dashboard/dokumenmonitoring');?>"><i class="fa fa-desktop"></i> Dokumen Monitoring <span class="label"></span></a>
                   </li>
-                  
+                  <li title="User"><a href="<?php echo base_url('dashboard/user');?>"><i class="fa fa-users"></i> User <span class="label"></span></a>
+                  </li>
                 </ul>
