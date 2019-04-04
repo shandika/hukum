@@ -40,6 +40,16 @@ class Dashboard extends CI_Controller {
         $this->load->view('layout/template', $data);
 	}
 
+	function user() {
+		$this->load->model('model_admin','m_admin');
+		$data['unit']=$this->m_admin->get_unit_kerja();
+		$data['data']=$this->m_admin->get_all_users();
+		$data['title'] = "Dashboard";
+        $data['subtitle'] = "User";
+        $data['view_isi'] = "admin/user";
+        $this->load->view('layout/template', $data);
+	}
+
 	function dokumenmonitoring() {
 		$this->load->model('model_admin','m_admin');
 		$data['data']=$this->m_admin->get_pending_dokumen();
