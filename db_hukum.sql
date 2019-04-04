@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2019 at 09:46 AM
+-- Generation Time: Apr 04, 2019 at 04:25 AM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -38,17 +38,6 @@ CREATE TABLE `tbl_catatan` (
   `catatan_staff` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbl_catatan`
---
-
-INSERT INTO `tbl_catatan` (`id`, `tgl_masuk`, `kode_voucher`, `nama`, `catatan_user`, `catatan_admin`, `catatan_staff`) VALUES
-(1, '2019-03-29 00:33:39', 'uj0wMJ', NULL, ' Catatan 1', NULL, NULL),
-(2, '2019-03-29 00:34:22', 'uj0wMJ', 'Yola', NULL, 'Catatan admin', NULL),
-(3, '2019-03-29 00:50:50', 'OLJFgG', NULL, ' Kirim Email', NULL, NULL),
-(4, '2019-03-29 00:51:14', 'OLJFgG', NULL, ' Ada email ga ?', NULL, NULL),
-(5, '2019-03-29 00:51:55', 'OLJFgG', NULL, ' Tes Ada Email ga ?', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -74,14 +63,6 @@ CREATE TABLE `tbl_new_job` (
   `status_inbox_staff` enum('0','1','2') NOT NULL DEFAULT '0',
   `status_pembaharuan_staff` enum('0','1','2') DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_new_job`
---
-
-INSERT INTO `tbl_new_job` (`kode_voucher`, `email`, `unit_kerja`, `judul_dokumen`, `catatan`, `tanggal_buat`, `tanggal_selesai`, `status`, `tgl_mulai_kerja`, `tgl_selesai_kerja`, `catatan_admin`, `catatan_staff`, `nama_staff`, `status_job`, `status_pending`, `status_inbox_staff`, `status_pembaharuan_staff`) VALUES
-('OLJFgG', 'sandikaka606@gmail.com', 'Pengembangan Bisnis dan Produksi', 'Tes Email', ' Tes Ada Email ga ?', '2019-03-29 00:50:50', '2019-04-01 07:50:50', '2', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0'),
-('uj0wMJ', 'irc.kakax@yahoo.co.id', 'Sekretaris Perusahaan', 'Tes Dokumen', ' Catatan 1', '2019-03-29 00:33:39', '2019-04-01 07:33:39', '1', '2019-03-29 07:33:52', '2019-04-01 07:34:22', 'Catatan admin', NULL, 'Yola', '2', '0', '2', '1');
 
 -- --------------------------------------------------------
 
@@ -125,7 +106,7 @@ CREATE TABLE `tbl_user` (
   `level` enum('admin','staff','') NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `job_title` varchar(20) NOT NULL
+  `job_title` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -133,8 +114,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`nama_user`, `nipeg_user`, `divisi_user`, `bagian_user`, `foto_user`, `level`, `username`, `password`, `job_title`) VALUES
-('Shandika Eka Putra', '123345', 'HCMQ', 'IT', 'shandika.jpg', 'admin', 'admin', '020a7e945fde6331c1e667b757015f05a0862aaf', 'Web'),
 ('Yola', '1233546', 'HCMQ', 'IT', 'yola.jpg', 'staff', 'yola', 'b51a7cdd2ee7d114227a1ec1ec31a98e6c7d9eb4', 'Web'),
+('SHANDIKA EKA PUTRA', '16111125', '', 'IT', 'shandika.jpg', 'admin', 'admin', '5fafba96a0848016294b620581e62442a818b6de', 'Web'),
 ('MOHAMAD ADITYA', 'PK.201812001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'aditya', '5d1852d43efe8f6e393448a3b4d1cd98a4cfd56f', 'null'),
 ('NADYA ARRIZKA HUTAMI', 'PK.201812002', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'nadya', '05cfb17b1fdd9c04f1d259eacec250a63b211222', 'null'),
 ('PUTTY OCTAVIANY PURWADIPUTRI', 'PP.201005001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'putty', '4fee5a2bfb0edcb3d0f8d955bd6f1c8860b305ae', 'null'),
