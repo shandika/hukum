@@ -14,7 +14,8 @@ class C_admin extends CI_Controller {
         $this->load->library('form_validation'); 
         $this->load->model('Model_admin','m_admin');
         $this->load->library('excel'); 
-        $this->load->library('pdf');  
+        $this->load->library('pdf'); 
+        $this->load->library('upload'); 
     }
 
 	
@@ -195,6 +196,147 @@ class C_admin extends CI_Controller {
         $pdf->SetFont('Arial','',9);
         $fileName = 'laporan-' . $row->kode_voucher . '.pdf';
         $pdf->Output($fileName, 'I');
+    }
+
+    function simpan_user(){
+                $config['upload_path'] = './public/images/staff/'; //path folder
+                $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+                $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
+
+                $this->upload->initialize($config);
+                if(!empty($_FILES['filefoto']['name']))
+                {
+                    if ($this->upload->do_upload('filefoto'))
+                    {
+                            $gbr = $this->upload->data();
+                            //Compress Image
+                            $config['image_library']='gd2';
+                            $config['source_image']='./public/images/staff/'.$gbr['file_name'];
+                            $config['create_thumb']= FALSE;
+                            $config['maintain_ratio']= FALSE;
+                            $config['quality']= '90%';
+                            $config['width']= 1500;
+                            $config['height']= 953;
+                            $config['new_image']= './public/images/staff/'.$gbr['file_name'];
+                            $this->load->library('image_lib', $config);
+                            $this->image_lib->resize();
+
+                            $gambar=$gbr['file_name'];
+                            $nama=strip_tags($this->input->post('xnama'));
+                            $nipeg=strip_tags($this->input->post('xnipeg'));
+                            $divisi=strip_tags($this->input->post('uk'));
+                            $bagian=strip_tags($this->input->post('xbagian'));
+                            $level=strip_tags($this->input->post('level'));
+                            $username=strip_tags($this->input->post('xusername'));
+                            $password=strip_tags($this->input->post('xpassword'));
+                            $repassword=strip_tags($this->input->post('xrepassword'));
+                            $p = sha1($password);
+                            
+                            if($password != $repassword) {
+                                echo $this->session->set_flashdata('msg','password-error');
+                                redirect('dashboard/user');
+                            } else {
+                                $this->m_admin->simpan_user($nama,$nipeg,$divisi,$bagian,$level,$username,$p,$gambar);
+                                echo $this->session->set_flashdata('msg','success');
+                                redirect('dashboard/user');
+                            }
+                            
+                    }else{
+                        echo $this->session->set_flashdata('msg','warning');
+                        redirect('dashboard/user');
+                    }
+                     
+                }else{
+                    redirect('dashboard/user');
+                }
+                
+    }
+    
+    function update_user(){
+                
+                $config['upload_path'] = './public/images/staff/'; //path folder
+                $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+                $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
+
+                $this->upload->initialize($config);
+                if(!empty($_FILES['filefoto']['name']))
+                {
+                    if ($this->upload->do_upload('filefoto'))
+                    {
+                            $gbr = $this->upload->data();
+                             //Compress Image
+                            $config['image_library']='gd2';
+                            $config['source_image']='./public/images/staff/'.$gbr['file_name'];
+                            $config['create_thumb']= FALSE;
+                            $config['maintain_ratio']= FALSE;
+                            $config['quality']= '90%';
+                            $config['width']= 1500;
+                            $config['height']= 953;
+                            $config['new_image']= './public/images/staff/'.$gbr['file_name'];
+                            $this->load->library('image_lib', $config);
+                            $this->image_lib->resize();
+
+                            $gambar=$gbr['file_name'];
+                            $nipeg_user=$this->input->post('kode');
+                            $nama=strip_tags($this->input->post('xnama'));
+                            $nipeg=strip_tags($this->input->post('xnipeg'));
+                            $divisi=strip_tags($this->input->post('uk'));
+                            $images=$this->input->post('gambar');
+                            $path='./public/images/staff/'.$images;
+                            unlink($path);
+                            $bagian=strip_tags($this->input->post('xbagian'));
+                            $level=strip_tags($this->input->post('level'));
+                            $username=strip_tags($this->input->post('xusername'));
+                            $password=strip_tags($this->input->post('xpassword'));
+                            $repassword=strip_tags($this->input->post('xrepassword'));
+                            $p = sha1($password);
+                            
+                            if($password != $repassword) {
+                                echo $this->session->set_flashdata('msg','password-error');
+                                redirect('dashboard/user');
+                            } else {
+                                $this->m_admin->update_user($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$p,$gambar);
+                                echo $this->session->set_flashdata('msg','success-edit');
+                                redirect('dashboard/user');
+                            }
+                        
+                    }else{
+                        echo $this->session->set_flashdata('msg','warning');
+                        redirect('dashboard/user');
+                    }
+                    
+                }else{
+                            $nipeg_user=$this->input->post('kode');
+                            $nama=strip_tags($this->input->post('xnama'));
+                            $nipeg=strip_tags($this->input->post('xnipeg'));
+                            $divisi=strip_tags($this->input->post('uk'));
+                            $bagian=strip_tags($this->input->post('xbagian'));
+                            $level=strip_tags($this->input->post('level'));
+                            $username=strip_tags($this->input->post('xusername'));
+                            $password=strip_tags($this->input->post('xpassword'));
+                            $repassword=strip_tags($this->input->post('xrepassword'));
+                            $p = sha1($password);
+                            
+                            if($password != $repassword) {
+                                echo $this->session->set_flashdata('msg','password-error');
+                                redirect('dashboard/user');
+                            } else {
+                                $this->m_admin->update_user_tanpa_gambar($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$p);
+                                echo $this->session->set_flashdata('msg','success-edit');
+                                redirect('dashboard/user');
+                            }
+                } 
+
+    }
+
+    function hapus_user(){
+        $kode=$this->input->post('kode');
+        $gambar=$this->input->post('gambar');
+        $path='./public/images/staff/'.$gambar;
+        unlink($path);
+        $this->m_admin->hapus_user($kode);
+        echo $this->session->set_flashdata('msg','success-hapus');
+        redirect('dashboard/user');
     }
 }
 ?>
