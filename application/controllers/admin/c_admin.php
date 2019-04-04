@@ -289,13 +289,12 @@ class C_admin extends CI_Controller {
                             $username=strip_tags($this->input->post('xusername'));
                             $password=strip_tags($this->input->post('xpassword'));
                             $repassword=strip_tags($this->input->post('xrepassword'));
-                            $p = sha1($password);
                             
                             if($password != $repassword) {
                                 echo $this->session->set_flashdata('msg','password-error');
                                 redirect('dashboard/user');
                             } else {
-                                $this->m_admin->update_user($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$p,$gambar);
+                                $this->m_admin->update_user($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$password,$gambar);
                                 echo $this->session->set_flashdata('msg','success-edit');
                                 redirect('dashboard/user');
                             }
@@ -315,13 +314,12 @@ class C_admin extends CI_Controller {
                             $username=strip_tags($this->input->post('xusername'));
                             $password=strip_tags($this->input->post('xpassword'));
                             $repassword=strip_tags($this->input->post('xrepassword'));
-                            $p = sha1($password);
                             
                             if($password != $repassword) {
                                 echo $this->session->set_flashdata('msg','password-error');
                                 redirect('dashboard/user');
                             } else {
-                                $this->m_admin->update_user_tanpa_gambar($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$p);
+                                $this->m_admin->update_user_tanpa_gambar($nipeg_user,$nama,$nipeg,$divisi,$bagian,$level,$username,$password);
                                 echo $this->session->set_flashdata('msg','success-edit');
                                 redirect('dashboard/user');
                             }
