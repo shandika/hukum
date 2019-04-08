@@ -96,8 +96,8 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                          <button id="b_admin" type="submit" class="btn btn-success submit">Admin yang Kerjakan</button>
-                          <button id="b_staff" type="submit" class="btn btn-primary submit">Kirim Ke Staff</button>
+                          <button id="b_admin" type="submit" class="btn btn-success submit">Job Pending</button>
+                          <button id="b_staff" type="submit" class="btn btn-primary submit">Job Pending</button>
                           <a href="<?php echo base_url().'admin/c_admin/set_finish/'.$b['kode_voucher'];?>"><button id="b_staff" type="button" class="btn btn-success">Finish</button></a>
                           <button type="button" class="btn btn-danger tombol-delete" href="<?php echo base_url(); ?>admin/c_admin/hapus_job/<?= $b['kode_voucher']; ?>">Hapus</button>
                         </div>
