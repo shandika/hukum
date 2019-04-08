@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2.1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 04, 2019 at 05:02 AM
--- Server version: 10.1.22-MariaDB
--- PHP Version: 7.1.4
+-- Host: localhost
+-- Generation Time: 08 Apr 2019 pada 14.20
+-- Versi Server: 5.7.25-0ubuntu0.16.04.2
+-- PHP Version: 7.2.16-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_catatan`
+-- Struktur dari tabel `tbl_catatan`
 --
 
 CREATE TABLE `tbl_catatan` (
@@ -38,10 +36,22 @@ CREATE TABLE `tbl_catatan` (
   `catatan_staff` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `tbl_catatan`
+--
+
+INSERT INTO `tbl_catatan` (`id`, `tgl_masuk`, `kode_voucher`, `nama`, `catatan_user`, `catatan_admin`, `catatan_staff`) VALUES
+(6, '2019-04-05 03:18:45', 'E7e2dZ', NULL, 'Mengambil jumlah', NULL, NULL),
+(7, '2019-04-05 06:28:32', 'DpQXRa', NULL, 'Tes Chart ', NULL, NULL),
+(8, '2019-04-08 04:46:10', 'E7e2dZ', 'YOLA IVONIE', NULL, 'Ambil', NULL),
+(9, '2019-04-08 05:47:08', 'ILkNXx', NULL, ' Tes', NULL, NULL),
+(10, '2019-04-08 05:48:03', 'ILkNXx', 'YOLA IVONIE', NULL, 'Kerjakan', NULL),
+(11, '2019-04-08 06:05:46', 'ILkNXx', 'YOLA IVONIE', NULL, 'Oke', NULL);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_new_job`
+-- Struktur dari tabel `tbl_new_job`
 --
 
 CREATE TABLE `tbl_new_job` (
@@ -64,10 +74,19 @@ CREATE TABLE `tbl_new_job` (
   `status_pembaharuan_staff` enum('0','1','2') DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `tbl_new_job`
+--
+
+INSERT INTO `tbl_new_job` (`kode_voucher`, `email`, `unit_kerja`, `judul_dokumen`, `catatan`, `tanggal_buat`, `tanggal_selesai`, `status`, `tgl_mulai_kerja`, `tgl_selesai_kerja`, `catatan_admin`, `catatan_staff`, `nama_staff`, `status_job`, `status_pending`, `status_inbox_staff`, `status_pembaharuan_staff`) VALUES
+('DpQXRa', 'tamu@gmail.com', 'Corporate Finance', 'Bulan April', 'Tes Chart ', '2019-04-05 06:28:32', '2019-04-08 01:28:32', '1', NULL, '2019-04-08 12:56:51', NULL, NULL, NULL, '0', '0', '0', '0'),
+('E7e2dZ', 'irc.kakax@yahoo.co.id', 'Pengembangan Bisnis dan Produksi', 'Count', 'Mengambil jumlah', '2019-04-05 03:18:45', '2019-04-08 10:18:45', '1', '2019-04-08 11:45:57', '2019-04-11 11:46:10', 'Ambil', NULL, 'YOLA IVONIE', '2', '0', '2', '1'),
+('ILkNXx', 'contoh@gmail.com', 'Produksi', 'Contoh', ' Tes', '2019-04-08 05:47:08', '2019-04-11 12:47:08', '1', '2019-04-08 01:05:19', '2019-04-11 01:05:46', 'Oke', NULL, 'YOLA IVONIE', '2', '0', '2', '1');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_unit_kerja`
+-- Struktur dari tabel `tbl_unit_kerja`
 --
 
 CREATE TABLE `tbl_unit_kerja` (
@@ -76,7 +95,7 @@ CREATE TABLE `tbl_unit_kerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_unit_kerja`
+-- Dumping data untuk tabel `tbl_unit_kerja`
 --
 
 INSERT INTO `tbl_unit_kerja` (`id_uk`, `nama_unit_kerja`) VALUES
@@ -85,7 +104,7 @@ INSERT INTO `tbl_unit_kerja` (`id_uk`, `nama_unit_kerja`) VALUES
 (4, 'Information Technology & Umum'),
 (1, 'Pengembangan Bisnis dan Produksi'),
 (5, 'Produksi'),
-(6, 'Satuan Pengawasaan Intern'),
+(6, 'Satuan Pengawasan Intern'),
 (8, 'SBU Broadband'),
 (10, 'SBU Defense & Digital Service'),
 (9, 'SBU Smart Energy'),
@@ -94,7 +113,7 @@ INSERT INTO `tbl_unit_kerja` (`id_uk`, `nama_unit_kerja`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Struktur dari tabel `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -110,12 +129,12 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_user`
+-- Dumping data untuk tabel `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`nama_user`, `nipeg_user`, `divisi_user`, `bagian_user`, `foto_user`, `level`, `username`, `password`, `job_title`) VALUES
 ('YOLA IVONIE', '1233546', 'Human Capital Management & Quality', 'IT', 'yola.jpg', 'staff', 'yola', 'b51a7cdd2ee7d114227a1ec1ec31a98e6c7d9eb4', 'Web'),
-('SHANDIKA EKA PUTRA', '16111125', 'Information Technology & Umum', 'IT', 'shandika.jpg', 'admin', 'admin', 'ac807a175c2a471eceafa5dacb6612e0a361def0', 'Web'),
+('SHANDIKA EKA PUTRA', '16111125', 'Human Capital Management & Quality', 'IT', 'shandika.jpg', 'admin', 'admin', 'ac807a175c2a471eceafa5dacb6612e0a361def0', 'Web'),
 ('MOHAMAD ADITYA', 'PK.201812001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'aditya', '5d1852d43efe8f6e393448a3b4d1cd98a4cfd56f', 'null'),
 ('NADYA ARRIZKA HUTAMI', 'PK.201812002', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'nadya', '05cfb17b1fdd9c04f1d259eacec250a63b211222', 'null'),
 ('PUTTY OCTAVIANY PURWADIPUTRI', 'PP.201005001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'putty', '4fee5a2bfb0edcb3d0f8d955bd6f1c8860b305ae', 'null'),
@@ -163,29 +182,28 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_catatan`
 --
 ALTER TABLE `tbl_catatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tbl_unit_kerja`
 --
 ALTER TABLE `tbl_unit_kerja`
   MODIFY `id_uk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `tbl_catatan`
+-- Ketidakleluasaan untuk tabel `tbl_catatan`
 --
 ALTER TABLE `tbl_catatan`
   ADD CONSTRAINT `tbl_catatan_ibfk_1` FOREIGN KEY (`kode_voucher`) REFERENCES `tbl_new_job` (`kode_voucher`),
   ADD CONSTRAINT `tbl_catatan_ibfk_2` FOREIGN KEY (`nama`) REFERENCES `tbl_user` (`nama_user`);
 
 --
--- Constraints for table `tbl_new_job`
+-- Ketidakleluasaan untuk tabel `tbl_new_job`
 --
 ALTER TABLE `tbl_new_job`
   ADD CONSTRAINT `tbl_new_job_ibfk_1` FOREIGN KEY (`unit_kerja`) REFERENCES `tbl_unit_kerja` (`nama_unit_kerja`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
