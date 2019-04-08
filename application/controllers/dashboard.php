@@ -9,16 +9,13 @@ class Dashboard extends CI_Controller {
 		 	redirect('login');
 		 }
 		 $this->load->model('model_user','m_user');
+		 $this->load->model('model_admin','m_admin');
+		 $this->load->model('model_staff','m_staff');
     }
 
     public function index()
 	{
-		$series_data[] = array('name' => 'Shandika', 'data' => array(8,7,9));
-		$series_data[] = array('name' => 'Eka', 'data' => array(7,5,9));
-		$data['series_data'] = json_encode($series_data);
-
 		$data['unit']=$this->m_user->get_unit_kerja();
-		$this->load->model('model_admin','m_admin');
 		$data['data']=$this->m_admin->get_all_dokumen();
 		$data['title'] = "Dashboard";
         $level = $this->session->userdata('level');
@@ -32,7 +29,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	function staffdiagram() {
-		$this->load->model('model_admin','m_admin');
+		
 		$data['data']=$this->m_admin->get_all_staff();
 		$data['title'] = "Dashboard";
         $data['subtitle'] = "Staff Diagram";
@@ -41,7 +38,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	function user() {
-		$this->load->model('model_admin','m_admin');
+		
 		$data['unit']=$this->m_admin->get_unit_kerja();
 		$data['data']=$this->m_admin->get_all_users();
 		$data['title'] = "Dashboard";
@@ -51,7 +48,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	function dokumenmonitoring() {
-		$this->load->model('model_admin','m_admin');
+		
 		$data['data']=$this->m_admin->get_pending_dokumen();
 		$data['finish']=$this->m_admin->get_finish_dokumen();
 		$data['title'] = "Dashboard";
@@ -60,7 +57,7 @@ class Dashboard extends CI_Controller {
         $this->load->view('layout/template', $data);
 	}
 	function dokumenmonitoringstaff() {
-		$this->load->model('model_staff','m_staff');
+		
 		$data['data']=$this->m_staff->get_pending_dokumen();
 		$data['finish']=$this->m_staff->get_finish_dokumen();
 		$data['title'] = "Dashboard";
