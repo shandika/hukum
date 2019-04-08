@@ -10,15 +10,15 @@
   <div class="x_panel">
     <div class="x_title" id="timer">
     <?php
-      $mulai = strtotime($b['tgl_mulai_kerja']);
-      $terlambat = strtotime($b['tgl_selesai_kerja']);
+      $mulai = strtotime($b['tanggal_buat']);
+      $terlambat = strtotime($b['tanggal_selesai']);
       $now = time();
         if($mulai > $now) : 
     ?>
       <div class="callout callout-success">
       <strong><i class="fa fa-clock-o"></i> Tidak Ada Tugas</strong>
       <br>
-      <span class="countdown" data-time="<?=date('Y-m-d H:i:s', strtotime($b['tgl_mulai_kerja']))?>">00 Hari, 00 Jam, 00 Menit, 00 Detik</strong><br/>
+      <span class="countdown" data-time="<?=date('Y-m-d H:i:s', strtotime($b['tanggal_buat']))?>">00 Hari, 00 Jam, 00 Menit, 00 Detik</strong><br/>
       </div>
       <?php elseif( $terlambat > $now ) : ?>
         <div class="callout callout-danger">
@@ -98,9 +98,6 @@
 
                     </form>
                   </div>
-                </div>
-                <div class="form-group">
-                <button type="button" value="Go Back" onclick="history.back(-1)" class="btn btn-primary btn-info btn-lg"><i class=" fa fa-arrow-circle-left"></i> B A C K</button>
                 </div>
               </div>
 <!--Modal Hapus-->
