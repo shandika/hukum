@@ -29,6 +29,14 @@ class C_admin extends CI_Controller {
         $this->load->view('layout/template',$data);
     }
 
+    function filter_tahun_chart_staff(){
+        $tahun=$this->input->get('tahun');
+        $kdn=$this->input->get('kdn');
+        $kode=$this->uri->segment(4);
+        $data['chart']=$this->m_admin->get_chart_staff($kdn,$tahun);
+        redirect('admin/c_admin/get_staff_detail/$kode');
+    }
+
     function get_job_detail(){
 		$data['staff']=$this->m_admin->staff();
         $kd=$this->uri->segment(4);
@@ -62,7 +70,8 @@ class C_admin extends CI_Controller {
 
     function set_finish(){
         $kode=$this->uri->segment(4);
-		$this->m_admin->finish_dokumen($kode);
+        $tglselesai=date('Y-m-d h:i:s');
+		$this->m_admin->finish_dokumen($kode,$tglselesai);
 		echo $this->session->set_flashdata('msg','success-finish');
 		redirect('dashboard');
     }
@@ -218,14 +227,80 @@ class C_admin extends CI_Controller {
         $data['view_isi'] = "back_end/dashboard";
         $this->load->view('layout/template', $data);
     }
+
+    public function filter_tahun_staff(){
+        $tahun=$this->input->get('tahun_staff');
+        //MOHAMAD ADITYA
+		$data['ad_januari'] = $this->m_admin->get_staff_ad_januari($tahun);
+		$data['ad_februari'] = $this->m_admin->get_staff_ad_februari($tahun);
+		$data['ad_maret'] = $this->m_admin->get_staff_ad_maret($tahun);
+		$data['ad_april'] = $this->m_admin->get_staff_ad_april($tahun);
+		$data['ad_mei'] = $this->m_admin->get_staff_ad_mei($tahun);
+		$data['ad_juni'] = $this->m_admin->get_staff_ad_juni($tahun);
+		$data['ad_juli'] = $this->m_admin->get_staff_ad_juli($tahun);
+		$data['ad_agustus'] = $this->m_admin->get_staff_ad_agustus($tahun);
+		$data['ad_september'] = $this->m_admin->get_staff_ad_september($tahun);
+		$data['ad_oktober'] = $this->m_admin->get_staff_ad_oktober($tahun);
+		$data['ad_november'] = $this->m_admin->get_staff_ad_november($tahun);
+		$data['ad_desember'] = $this->m_admin->get_staff_ad_desember($tahun);
+		//NADYA ARRIZKA HUTAMI
+		$data['nd_januari'] = $this->m_admin->get_staff_nd_januari($tahun);
+		$data['nd_februari'] = $this->m_admin->get_staff_nd_februari($tahun);
+		$data['nd_maret'] = $this->m_admin->get_staff_nd_maret($tahun);
+		$data['nd_april'] = $this->m_admin->get_staff_nd_april($tahun);
+		$data['nd_mei'] = $this->m_admin->get_staff_nd_mei($tahun);
+		$data['nd_juni'] = $this->m_admin->get_staff_nd_juni($tahun);
+		$data['nd_juli'] = $this->m_admin->get_staff_nd_juli($tahun);
+		$data['nd_agustus'] = $this->m_admin->get_staff_nd_agustus($tahun);
+		$data['nd_september'] = $this->m_admin->get_staff_nd_september($tahun);
+		$data['nd_oktober'] = $this->m_admin->get_staff_nd_oktober($tahun);
+		$data['nd_november'] = $this->m_admin->get_staff_nd_november($tahun);
+        $data['nd_desember'] = $this->m_admin->get_staff_nd_desember($tahun);
+        //PUTTY OCTAVIANY PURWADIPUTRI
+		$data['pt_januari'] = $this->m_admin->get_staff_pt_januari($tahun);
+		$data['pt_februari'] = $this->m_admin->get_staff_pt_februari($tahun);
+		$data['pt_maret'] = $this->m_admin->get_staff_pt_maret($tahun);
+		$data['pt_april'] = $this->m_admin->get_staff_pt_april($tahun);
+		$data['pt_mei'] = $this->m_admin->get_staff_pt_mei($tahun);
+		$data['pt_juni'] = $this->m_admin->get_staff_pt_juni($tahun);
+		$data['pt_juli'] = $this->m_admin->get_staff_pt_juli($tahun);
+		$data['pt_agustus'] = $this->m_admin->get_staff_pt_agustus($tahun);
+		$data['pt_september'] = $this->m_admin->get_staff_pt_september($tahun);
+		$data['pt_oktober'] = $this->m_admin->get_staff_pt_oktober($tahun);
+		$data['pt_november'] = $this->m_admin->get_staff_pt_november($tahun);
+		$data['pt_desember'] = $this->m_admin->get_staff_pt_desember($tahun);
+        //RADEN SITI SARI DEWI
+        $data['rd_januari'] = $this->m_admin->get_staff_rd_januari($tahun);
+        $data['rd_februari'] = $this->m_admin->get_staff_rd_februari($tahun);
+        $data['rd_maret'] = $this->m_admin->get_staff_rd_maret($tahun);
+        $data['rd_april'] = $this->m_admin->get_staff_rd_april($tahun);
+        $data['rd_mei'] = $this->m_admin->get_staff_rd_mei($tahun);
+        $data['rd_juni'] = $this->m_admin->get_staff_rd_juni($tahun);
+        $data['rd_juli'] = $this->m_admin->get_staff_rd_juli($tahun);
+        $data['rd_agustus'] = $this->m_admin->get_staff_rd_agustus($tahun);
+        $data['rd_september'] = $this->m_admin->get_staff_rd_september($tahun);
+        $data['rd_oktober'] = $this->m_admin->get_staff_rd_oktober($tahun);
+        $data['rd_november'] = $this->m_admin->get_staff_rd_november($tahun);
+        $data['rd_desember'] = $this->m_admin->get_staff_rd_desember($tahun);
+
+		$data['unit']=$this->m_user->get_unit_kerja();
+		$data['data']=$this->m_admin->get_all_dokumen();
+		$data['title'] = "Dashboard";
+        $level = $this->session->userdata('level');
+        if ($level == "admin") {
+        	$data['subtitle'] = "Admin";
+        } else{
+        	$data['subtitle'] = "Staff";
+    	}
+        $data['view_isi'] = "back_end/dashboard";
+        $this->load->view('layout/template', $data);
+    }
   
     function kirim_job(){
         $kodevoucher=strip_tags($this->input->post('kodevoucher'));
         $catatanadmin=strip_tags($this->input->post('catatanadmin'));
         $namastaff=strip_tags($this->input->post('country'));
-        $tglmulai=strip_tags($this->input->post('mulai'));
         $user=strip_tags($this->input->post('user'));
-        $tglselesai=date('Y-m-d h:i:s', strtotime("+3 day", strtotime(date("Y-m-d h:i:s"))));
 
         if($user=strip_tags($this->input->post('user'))=="admin"){
             $this->form_validation->set_rules('catatanadmin','Catatan Admin','required');
@@ -234,7 +309,7 @@ class C_admin extends CI_Controller {
 
             if($this->form_validation->run() != false){
                 $kode=$kodevoucher;
-                $this->m_admin->simpan_job_admin($kode,$catatanadmin,$admin,$tglselesai,$tglmulai,$user);
+                $this->m_admin->simpan_job_admin($kode,$catatanadmin,$admin,$user);
                 echo $this->session->set_flashdata('msg','success');
                 redirect('dashboard');
             }else{
@@ -248,7 +323,7 @@ class C_admin extends CI_Controller {
 
             if($this->form_validation->run() != false){
                 $kode=$kodevoucher;
-                $this->m_admin->simpan_job($kode,$catatanadmin,$namastaff,$tglselesai,$tglmulai,$user);
+                $this->m_admin->simpan_job($kode,$catatanadmin,$namastaff,$user);
                 echo $this->session->set_flashdata('msg','success');
                 redirect('dashboard');
             }else{
