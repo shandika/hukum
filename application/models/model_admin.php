@@ -44,7 +44,9 @@ class Model_admin extends CI_Model {
 		return $hsl;
     }
     function hapus_job($kode){
-		$hsl=$this->db->query("delete from tbl_new_job where kode_voucher='$kode'");
+        $hsl=$this->db->query("delete from tbl_catatan where kode_voucher='$kode'");
+        $hsl.=$this->db->query("delete from tbl_new_job where kode_voucher='$kode'");
+        
 		return $hsl;
     }
     function kirim_job($kode,$staff_nipeg,$staff_nama,$tglselesai,$job,$tglmulai){
