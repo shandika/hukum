@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 08 Apr 2019 pada 14.20
+-- Generation Time: 09 Apr 2019 pada 08.12
 -- Versi Server: 5.7.25-0ubuntu0.16.04.2
 -- PHP Version: 7.2.16-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -42,7 +42,6 @@ CREATE TABLE `tbl_catatan` (
 
 INSERT INTO `tbl_catatan` (`id`, `tgl_masuk`, `kode_voucher`, `nama`, `catatan_user`, `catatan_admin`, `catatan_staff`) VALUES
 (6, '2019-04-05 03:18:45', 'E7e2dZ', NULL, 'Mengambil jumlah', NULL, NULL),
-(7, '2019-04-05 06:28:32', 'DpQXRa', NULL, 'Tes Chart ', NULL, NULL),
 (8, '2019-04-08 04:46:10', 'E7e2dZ', 'YOLA IVONIE', NULL, 'Ambil', NULL),
 (9, '2019-04-08 05:47:08', 'ILkNXx', NULL, ' Tes', NULL, NULL),
 (10, '2019-04-08 05:48:03', 'ILkNXx', 'YOLA IVONIE', NULL, 'Kerjakan', NULL),
@@ -79,7 +78,6 @@ CREATE TABLE `tbl_new_job` (
 --
 
 INSERT INTO `tbl_new_job` (`kode_voucher`, `email`, `unit_kerja`, `judul_dokumen`, `catatan`, `tanggal_buat`, `tanggal_selesai`, `status`, `tgl_mulai_kerja`, `tgl_selesai_kerja`, `catatan_admin`, `catatan_staff`, `nama_staff`, `status_job`, `status_pending`, `status_inbox_staff`, `status_pembaharuan_staff`) VALUES
-('DpQXRa', 'tamu@gmail.com', 'Corporate Finance', 'Bulan April', 'Tes Chart ', '2019-04-05 06:28:32', '2019-04-08 01:28:32', '1', NULL, '2019-04-08 12:56:51', NULL, NULL, NULL, '0', '0', '0', '0'),
 ('E7e2dZ', 'irc.kakax@yahoo.co.id', 'Pengembangan Bisnis dan Produksi', 'Count', 'Mengambil jumlah', '2019-04-05 03:18:45', '2019-04-08 10:18:45', '1', '2019-04-08 11:45:57', '2019-04-11 11:46:10', 'Ambil', NULL, 'YOLA IVONIE', '2', '0', '2', '1'),
 ('ILkNXx', 'contoh@gmail.com', 'Produksi', 'Contoh', ' Tes', '2019-04-08 05:47:08', '2019-04-11 12:47:08', '1', '2019-04-08 01:05:19', '2019-04-11 01:05:46', 'Oke', NULL, 'YOLA IVONIE', '2', '0', '2', '1');
 
@@ -135,11 +133,11 @@ CREATE TABLE `tbl_user` (
 INSERT INTO `tbl_user` (`nama_user`, `nipeg_user`, `divisi_user`, `bagian_user`, `foto_user`, `level`, `username`, `password`, `job_title`) VALUES
 ('YOLA IVONIE', '1233546', 'Human Capital Management & Quality', 'IT', 'yola.jpg', 'staff', 'yola', 'b51a7cdd2ee7d114227a1ec1ec31a98e6c7d9eb4', 'Web'),
 ('SHANDIKA EKA PUTRA', '16111125', 'Human Capital Management & Quality', 'IT', 'shandika.jpg', 'admin', 'admin', 'ac807a175c2a471eceafa5dacb6612e0a361def0', 'Web'),
-('MOHAMAD ADITYA', 'PK.201812001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'aditya', '5d1852d43efe8f6e393448a3b4d1cd98a4cfd56f', 'null'),
-('NADYA ARRIZKA HUTAMI', 'PK.201812002', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'nadya', '05cfb17b1fdd9c04f1d259eacec250a63b211222', 'null'),
-('PUTTY OCTAVIANY PURWADIPUTRI', 'PP.201005001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'putty', '4fee5a2bfb0edcb3d0f8d955bd6f1c8860b305ae', 'null'),
-('RADEN SITI SARI DEWI', 'PP.201202022', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'sari', 'bbde9ba3c334de9ac817aa0264edb8b9b1eabe72', 'null'),
-('EZRA LONTOH', 'PP200912001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'admin', 'ezra', '9fd00e132efa4424ee4d0c3efa584ea43b66f114', 'null');
+('MOHAMAD ADITYA', 'PK201812001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'aditya', '5d1852d43efe8f6e393448a3b4d1cd98a4cfd56f', 'null'),
+('NADYA ARRIZKA HUTAMI', 'PK201812002', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'nadya', '05cfb17b1fdd9c04f1d259eacec250a63b211222', 'null'),
+('EZRA LONTOH', 'PP200912001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'admin', 'ezra', '9fd00e132efa4424ee4d0c3efa584ea43b66f114', 'null'),
+('PUTTY OCTAVIANY PURWADIPUTRI', 'PP201005001', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'putty', '4fee5a2bfb0edcb3d0f8d955bd6f1c8860b305ae', 'null'),
+('RADEN SITI SARI DEWI', 'PP201202022', 'Sekretaris Perusahaan', 'Hukum', 'umar.jpg', 'staff', 'sari', 'bbde9ba3c334de9ac817aa0264edb8b9b1eabe72', 'null');
 
 --
 -- Indexes for dumped tables
