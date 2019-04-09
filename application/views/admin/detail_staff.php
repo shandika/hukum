@@ -24,7 +24,15 @@
               </li>
       </ul>
     </div>
-
+              <?php
+                if(!empty($chart)) {
+                  foreach($chart as $data){
+                      $jumlah[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah[] = 0;
+                    }
+              ?>
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -39,6 +47,24 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+                    <form action="<?php echo base_url().'admin/c_admin/filter_tahun_chart_staff/';?>" method="get">
+                  <div class="col-md-2 col-sm-2 col-xs-2">
+                  <select class="form-control" name="tahun">
+                  <option selected="" disabled="" value="0">--Pilih Tahun--</option>
+                    <?php
+                    $thn_skr = date('Y') - 5;
+                    $pilih = $_GET['tahun'];
+                    for($x = $thn_skr; $x < $thn_skr + 10; $x++){
+                      ?>
+                    <option value="<?php echo $x ?>" <?php if($x == $pilih){ echo 'selected';} ?>><?php echo $x ?></option>
+                    <?php
+                    }
+                    ?>
+                  </select>
+                  </div>
+                  <button type="submit" class="btn-sm btn-default">Filter</button>
+                  <input type="hidden" name="kdn" value="<?php echo $b['nama_user'];?>">
+                  </form>
                   <div id="graph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                   </div>
                 </div>
@@ -58,10 +84,10 @@
         type: 'column'
       },
       title: {
-        text: 'Monthly Average Rainfall'
+        text: 'Chart Staff <?php echo $b['nama_user'];?>'
       },
       subtitle: {
-        text: 'Source: WorldClimate.com'
+        text: 'per Tahun'
       },
       xAxis: {
         categories: [
@@ -101,20 +127,8 @@
         }
       },
       series: [{
-        name: 'Tokyo',
-        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-      }, {
-        name: 'New York',
-        data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-      }, {
-        name: 'London',
-        data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-      }, {
-        name: 'Berlin',
-        data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+        name: '<?php echo $b['nama_user'];?>',
+        data: [49.9, 71.5, 106.4, <?php echo json_encode($jumlah);?>, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
 
       }]
     });
