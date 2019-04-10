@@ -1110,10 +1110,10 @@
                   <option selected="" disabled="" value="0">--Pilih Tahun--</option>
                     <?php
                     $thn_skr = date('Y') - 5;
-                    $pilih = $_GET['tahun'];
+                    $pilih2 = $_GET['tahun_staff'];
                     for($x = $thn_skr; $x < $thn_skr + 10; $x++){
                       ?>
-                    <option value="<?php echo $x ?>" <?php if($x == $pilih){ echo 'selected';} ?>><?php echo $x ?></option>
+                    <option value="<?php echo $x ?>" <?php if($x == $pilih2){ echo 'selected';} ?>><?php echo $x ?></option>
                     <?php
                     }
                     ?>
@@ -1513,6 +1513,7 @@
                     }else{
                       $jumlah1_4_12[] = 0;
                     }
+                
             ?>
 
         <div class="container">
@@ -1626,7 +1627,7 @@ Highcharts.chart('graph', {
     text: 'Chart Data Staff Hukum'
   },
   subtitle: {
-    text: 'per Tahun'
+    text: 'per Tahun <?php echo $pilih2; ?>'
   },
   xAxis: {
     categories: [
