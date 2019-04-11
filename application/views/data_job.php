@@ -33,7 +33,7 @@
                        $judul_dokumen=$i['judul_dokumen'];
                        $catatan=$i['catatan'];
                        $tanggal_buat=$i['tgl'];
-                       $status=$i['status'];
+                       $status=$i['status_pending'];
                        $statusjob=$i['status_job'];
                        $staff=$i['nama_staff'];
                                     
@@ -51,12 +51,10 @@
                       <td><?php echo $tanggal_buat;?></td>
                       <td>
                       <?php 
-                      if($statusjob==2){
-                        echo '<button type="button" class="btn btn-info btn-xs">Dikerjakan Staff</button>';
-                      } elseif($statusjob==3){
-                        echo '<button type="button" class="btn btn-primary btn-xs">Dikerjakan Admin</button>';
+                      if($status==0){
+                        echo '<button type="button" class="btn btn-danger btn-xs">Pending</button>';
                       } else{
-                        echo '<button type="button" class="btn btn-danger btn-xs">Belum Dikerjakan</button>';
+                        echo '<button type="button" class="btn btn-success btn-xs">Finish</button>';
                       }
                       ?>
                       </td>
