@@ -316,7 +316,7 @@ class C_admin extends CI_Controller {
                 echo $this->session->set_flashdata('msg','validasi');
                 redirect('dashboard');
             }
-        }else {
+        }elseif($user=strip_tags($this->input->post('user'))=="staff") {
             $this->form_validation->set_rules('catatanadmin','Catatan Admin','required');
             $this->form_validation->set_rules('country','Country','required');
             $this->form_validation->set_rules('user','User','required');
@@ -330,7 +330,20 @@ class C_admin extends CI_Controller {
                 echo $this->session->set_flashdata('msg','validasi');
                 redirect('dashboard');
             }
-        }	
+        }else {
+            $this->form_validation->set_rules('catatanadmin','Catatan Admin','required');
+            $this->form_validation->set_rules('country','Country','required');
+
+            if($this->form_validation->run() != false){
+                $kode=$kodevoucher;
+                $this->m_admin->simpan_job_user($kode,$catatanadmin,$namastaff);
+                echo $this->session->set_flashdata('msg','success');
+                redirect('dashboard');
+            }else{
+                echo $this->session->set_flashdata('msg','validasi');
+                redirect('dashboard');          
+        }
+    }	
             
     }
 
