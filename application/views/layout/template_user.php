@@ -127,12 +127,13 @@
     
     <script type="text/javascript">
           $(document).ready(function(){
+            var selected = [];
             
             $('#tabeldata2').dataTable( {
               "aaSorting": [[ 4, "desc" ]]
               } );
               $('#tabelcatatan2').dataTable( {
-              "aaSorting": [[ 0, "asc" ]]
+              "aaSorting": [[ 0, "desc" ]]
               } );
             
       });
