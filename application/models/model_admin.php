@@ -74,6 +74,11 @@ class Model_admin extends CI_Model {
         $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,nama,catatan_admin) values ('$kode','$admin','$catatanadmin')");
         return $hsl;
     }
+    function simpan_job_user($kode,$catatanadmin,$namastaff){
+        $hsl=$this->db->query("update tbl_new_job set catatan_admin='$catatanadmin',nama_staff='$namastaff',status_job='2',status_inbox_staff='1',status_pembaharuan_staff='1' where kode_voucher='$kode'");
+        $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,nama,catatan_admin) values ('$kode','$namastaff','$catatanadmin')");
+        return $hsl;
+    }
     function simpan_user($nama,$nipeg,$divisi,$bagian,$level,$username,$p,$gambar){
         $hsl=$this->db->query("insert into tbl_user(nama_user,nipeg_user,divisi_user,bagian_user,foto_user,level,username,password) values ('$nama','$nipeg','$divisi','$bagian','$gambar','$level','$username','$p')");
         return $hsl;
@@ -1996,4 +2001,5 @@ class Model_admin extends CI_Model {
             return $hasil;
         }
     }
+
 }
