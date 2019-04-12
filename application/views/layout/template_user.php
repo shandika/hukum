@@ -132,7 +132,7 @@
               "aaSorting": [[ 4, "desc" ]]
               } );
               $('#tabelcatatan2').dataTable( {
-              "aaSorting": [[ 0, "desc" ]]
+              "aaSorting": [[ 0, "asc" ]]
               } );
             
       });
