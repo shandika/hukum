@@ -6,7 +6,7 @@
 <input type="hidden" name="kd" value="<?php echo $b['kode_voucher'];?>">
 <input type="hidden" name="stat" value="<?php echo $b['kode_voucher'];?>">
 
-<div class="col-md-12 col-xs-12">
+
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Detail New Job <small><?php echo $b['kode_voucher'];?></small></h2>
@@ -102,7 +102,7 @@
                     </form>
                   </div>
                 </div>
-              </div>
+              
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url().'assets/plugins/jQuery/jquery-2.2.3.min.js'?>"></script>
