@@ -66,11 +66,6 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="hidden" value="<?php echo date('Y-m-d h:i:s');?>" name="mulai" id="mulai">
-                        </div>
-                      </div>
-                      <div class="form-group">
                         <label id="kerja" class="control-label col-md-3 col-sm-3 col-xs-12">Pengerjaan</label>
                         <div class="col-md-3 col-sm-3 col-xs-3">
                           <select name="user" id="user" class="form-control">
@@ -96,9 +91,10 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                          <button id="b_admin" type="submit" class="btn btn-success submit">Job Pending</button>
-                          <button id="b_staff" type="submit" class="btn btn-primary submit">Job Pending</button>
-                          <a href="<?php echo base_url().'admin/c_admin/set_finish/'.$b['kode_voucher'];?>"><button id="b_staff" type="button" class="btn btn-success">Finish</button></a>
+                          <button id="b_admin" type="submit" class="btn btn-success submit">Kirim</button>
+                          <button id="b_staff" type="submit" class="btn btn-primary submit">Kirim</button>
+                          <button id="b_user" type="submit" class="btn btn-primary submit">Job Pending</button>
+                          <a href="<?php echo base_url().'admin/c_admin/set_finish/'.$b['kode_voucher'];?>"><button id="b_finish" type="button" class="btn btn-success">Finish</button></a>
                           <button type="button" class="btn btn-danger tombol-delete" href="<?php echo base_url(); ?>admin/c_admin/hapus_job/<?= $b['kode_voucher']; ?>">Hapus</button>
                         </div>
                       </div>
@@ -108,6 +104,21 @@
                 </div>
               </div>
 
+<!-- jQuery 2.2.3 -->
+<script src="<?php echo base_url().'assets/plugins/jQuery/jquery-2.2.3.min.js'?>"></script>
 <!-- Sweetalert -->
 <script src="<?php echo base_url().'assets/plugins/sweetalerts/sweetalert2.all.min.js'?>"></script>
 <script src="<?php echo base_url().'assets/plugins/sweetalerts/myscript.js'?>"></script>
+<script>
+  $(function () {
+        $("#user").change(function () {
+            if ($(this).val() == "admin" || $(this).val() == "staff") {
+                $("#b_user").hide();
+                
+            } else {
+                $("#b_user").show();
+                
+            }
+        });
+    });
+</script>
