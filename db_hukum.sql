@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 09 Apr 2019 pada 08.12
--- Versi Server: 5.7.25-0ubuntu0.16.04.2
+-- Generation Time: Apr 22, 2019 at 03:49 PM
+-- Server version: 5.7.25-0ubuntu0.16.04.2
 -- PHP Version: 7.2.16-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_catatan`
+-- Table structure for table `tbl_catatan`
 --
 
 CREATE TABLE `tbl_catatan` (
@@ -37,7 +37,7 @@ CREATE TABLE `tbl_catatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_catatan`
+-- Dumping data for table `tbl_catatan`
 --
 
 INSERT INTO `tbl_catatan` (`id`, `tgl_masuk`, `kode_voucher`, `nama`, `catatan_user`, `catatan_admin`, `catatan_staff`) VALUES
@@ -45,12 +45,28 @@ INSERT INTO `tbl_catatan` (`id`, `tgl_masuk`, `kode_voucher`, `nama`, `catatan_u
 (8, '2019-04-08 04:46:10', 'E7e2dZ', 'YOLA IVONIE', NULL, 'Ambil', NULL),
 (9, '2019-04-08 05:47:08', 'ILkNXx', NULL, ' Tes', NULL, NULL),
 (10, '2019-04-08 05:48:03', 'ILkNXx', 'YOLA IVONIE', NULL, 'Kerjakan', NULL),
-(11, '2019-04-08 06:05:46', 'ILkNXx', 'YOLA IVONIE', NULL, 'Oke', NULL);
+(11, '2019-04-08 06:05:46', 'ILkNXx', 'YOLA IVONIE', NULL, 'Oke', NULL),
+(12, '2019-04-09 02:05:44', 'Rfoq1C', NULL, ' Finish Dokumen', NULL, NULL),
+(13, '2019-04-09 02:06:06', 'Rfoq1C', 'YOLA IVONIE', NULL, 'Finish', NULL),
+(14, '2019-04-09 02:16:27', 'Tv2IsK', NULL, ' finish2', NULL, NULL),
+(15, '2019-04-09 02:16:54', 'Tv2IsK', 'YOLA IVONIE', NULL, 'set finish', NULL),
+(16, '2019-04-09 04:06:12', 'CMZMkN', NULL, ' Tes', NULL, NULL),
+(17, '2019-04-09 04:06:40', 'CMZMkN', 'MOHAMAD ADITYA', NULL, 'Admin', NULL),
+(18, '2019-04-11 10:48:05', 'E7e2dZ', 'YOLA IVONIE', NULL, NULL, 'Siap'),
+(20, '2019-04-11 11:19:34', 'E7e2dZ', 'YOLA IVONIE', NULL, 'catatan admin untuk user', NULL),
+(21, '2019-04-12 06:40:37', '8CRXjA', NULL, ' 1', NULL, NULL),
+(22, '2019-04-12 06:41:00', '8CRXjA', 'YOLA IVONIE', NULL, '2', NULL),
+(23, '2019-04-12 06:41:27', '8CRXjA', 'YOLA IVONIE', NULL, NULL, '3'),
+(24, '2019-04-12 06:41:48', '8CRXjA', 'YOLA IVONIE', NULL, '4', NULL),
+(25, '2019-04-12 06:42:08', '8CRXjA', NULL, ' 5', NULL, NULL),
+(26, '2019-04-12 06:42:28', '8CRXjA', 'YOLA IVONIE', NULL, '6', NULL),
+(27, '2019-04-12 06:42:48', '8CRXjA', 'YOLA IVONIE', NULL, NULL, '7'),
+(28, '2019-04-12 06:43:08', '8CRXjA', 'YOLA IVONIE', NULL, '8', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_new_job`
+-- Table structure for table `tbl_new_job`
 --
 
 CREATE TABLE `tbl_new_job` (
@@ -74,17 +90,21 @@ CREATE TABLE `tbl_new_job` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_new_job`
+-- Dumping data for table `tbl_new_job`
 --
 
 INSERT INTO `tbl_new_job` (`kode_voucher`, `email`, `unit_kerja`, `judul_dokumen`, `catatan`, `tanggal_buat`, `tanggal_selesai`, `status`, `tgl_mulai_kerja`, `tgl_selesai_kerja`, `catatan_admin`, `catatan_staff`, `nama_staff`, `status_job`, `status_pending`, `status_inbox_staff`, `status_pembaharuan_staff`) VALUES
-('E7e2dZ', 'irc.kakax@yahoo.co.id', 'Pengembangan Bisnis dan Produksi', 'Count', 'Mengambil jumlah', '2019-04-05 03:18:45', '2019-04-08 10:18:45', '1', '2019-04-08 11:45:57', '2019-04-11 11:46:10', 'Ambil', NULL, 'YOLA IVONIE', '2', '0', '2', '1'),
-('ILkNXx', 'contoh@gmail.com', 'Produksi', 'Contoh', ' Tes', '2019-04-08 05:47:08', '2019-04-11 12:47:08', '1', '2019-04-08 01:05:19', '2019-04-11 01:05:46', 'Oke', NULL, 'YOLA IVONIE', '2', '0', '2', '1');
+('8CRXjA', 'contoh@gmail.com', 'Corporate Finance', 'Tes Sorting', ' 5', '2019-04-12 06:40:37', '2019-04-15 01:40:37', '1', NULL, NULL, '8', '7', 'YOLA IVONIE', '2', '0', '1', '1'),
+('CMZMkN', 'sandikaka606@gmail.com', 'Information Technology & Umum', 'Server', ' Tes', '2019-04-09 04:06:12', '2019-04-12 11:06:11', '1', NULL, '2019-04-09 11:07:03', 'Admin', NULL, 'MOHAMAD ADITYA', '2', '1', '1', '1'),
+('E7e2dZ', 'irc.kakax@yahoo.co.id', 'Pengembangan Bisnis dan Produksi', 'Count', 'Mengambil jumlah', '2019-04-05 03:18:45', '2019-04-08 10:18:45', '1', '2019-04-08 11:45:57', '2019-04-11 00:00:00', 'catatan admin untuk user', 'Siap', 'YOLA IVONIE', '2', '0', '1', '1'),
+('ILkNXx', 'contoh@gmail.com', 'Produksi', 'Contoh', ' Tes', '2019-04-08 05:47:08', '2019-04-11 12:47:08', '1', '2019-04-08 01:05:19', '2019-04-11 00:00:00', 'Oke', NULL, 'YOLA IVONIE', '2', '0', '2', '1'),
+('Rfoq1C', 'shandi@yahoo.com', 'Produksi', 'Set Finish', ' Finish Dokumen', '2019-04-09 02:05:43', '2019-04-12 09:05:43', '1', NULL, NULL, 'Finish', NULL, 'YOLA IVONIE', '2', '0', '2', '1'),
+('Tv2IsK', 'ka@gmail.com', 'Human Capital Management & Quality', 'finish', ' finish2', '2019-04-09 02:16:27', '2019-04-12 09:16:27', '1', NULL, '2019-04-09 09:21:26', 'set finish', NULL, 'YOLA IVONIE', '2', '1', '1', '1');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_unit_kerja`
+-- Table structure for table `tbl_unit_kerja`
 --
 
 CREATE TABLE `tbl_unit_kerja` (
@@ -93,7 +113,7 @@ CREATE TABLE `tbl_unit_kerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_unit_kerja`
+-- Dumping data for table `tbl_unit_kerja`
 --
 
 INSERT INTO `tbl_unit_kerja` (`id_uk`, `nama_unit_kerja`) VALUES
@@ -111,7 +131,7 @@ INSERT INTO `tbl_unit_kerja` (`id_uk`, `nama_unit_kerja`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_user`
+-- Table structure for table `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -127,7 +147,7 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_user`
+-- Dumping data for table `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`nama_user`, `nipeg_user`, `divisi_user`, `bagian_user`, `foto_user`, `level`, `username`, `password`, `job_title`) VALUES
@@ -180,25 +200,25 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_catatan`
 --
 ALTER TABLE `tbl_catatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `tbl_unit_kerja`
 --
 ALTER TABLE `tbl_unit_kerja`
   MODIFY `id_uk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tbl_catatan`
+-- Constraints for table `tbl_catatan`
 --
 ALTER TABLE `tbl_catatan`
   ADD CONSTRAINT `tbl_catatan_ibfk_1` FOREIGN KEY (`kode_voucher`) REFERENCES `tbl_new_job` (`kode_voucher`),
   ADD CONSTRAINT `tbl_catatan_ibfk_2` FOREIGN KEY (`nama`) REFERENCES `tbl_user` (`nama_user`);
 
 --
--- Ketidakleluasaan untuk tabel `tbl_new_job`
+-- Constraints for table `tbl_new_job`
 --
 ALTER TABLE `tbl_new_job`
   ADD CONSTRAINT `tbl_new_job_ibfk_1` FOREIGN KEY (`unit_kerja`) REFERENCES `tbl_unit_kerja` (`nama_unit_kerja`);
