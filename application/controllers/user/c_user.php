@@ -24,6 +24,8 @@ class C_user extends CI_Controller {
         $juduldokumen=strip_tags($this->input->post('juduldokumen'));
         $catatan=strip_tags($this->input->post('catatan'));
         $tglselesai=date('Y-m-d h:i:s', strtotime("+3 day", strtotime(date("Y-m-d h:i:s"))));
+        $tglmulaikerja=date('Y-m-d h:i:s');
+        $tglselesaikerja=date('Y-m-d h:i:s', strtotime("+3 day", strtotime(date("Y-m-d h:i:s"))));
 
 		if($job=strip_tags($this->input->post('job')) == "New Job"){
             $this->form_validation->set_rules('email','Email','required');
@@ -33,7 +35,7 @@ class C_user extends CI_Controller {
 
             if($this->form_validation->run() != false){
                 $this->load->model('model_user','m_user');
-                $this->m_user->simpan_job($email,$uk,$kodevoucher,$juduldokumen,$catatan,$tglselesai);
+                $this->m_user->simpan_job($email,$uk,$kodevoucher,$juduldokumen,$catatan,$tglselesai,$tglmulaikerja,$tglselesaikerja);
                 echo $this->session->set_flashdata('msg','success');
                 redirect('welcome');
             }else{
@@ -50,7 +52,7 @@ class C_user extends CI_Controller {
 
                 if($this->form_validation->run() != false){
                     $this->load->model('model_user','m_user');
-                    $this->m_user->pending_job($kodevoucherpending,$catatan);
+                    $this->m_user->pending_job($kodevoucherpending,$catatan,$tglmulaikerja,$tglselesaikerja);
                     echo $this->session->set_flashdata('msg','success-pending');
                     redirect('welcome');
                 } else{
