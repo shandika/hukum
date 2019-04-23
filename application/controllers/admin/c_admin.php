@@ -68,14 +68,6 @@ class C_admin extends CI_Controller {
 		redirect('dashboard');
     }
 
-    function set_finish(){
-        $kode=$this->uri->segment(4);
-        $tglselesai=date('Y-m-d h:i:s');
-		$this->m_admin->finish_dokumen($kode,$tglselesai);
-		echo $this->session->set_flashdata('msg','success-finish');
-		redirect('dashboard');
-    }
-
     public function GetCountryName(){
         $keyword=$this->input->post('keyword');
         $data=$this->m_admin->GetRow($keyword);        
@@ -320,29 +312,39 @@ class C_admin extends CI_Controller {
             $this->form_validation->set_rules('catatanadmin','Catatan Admin','required');
             $this->form_validation->set_rules('country','Country','required');
             $this->form_validation->set_rules('user','User','required');
+            $admin=$this->session->userdata('nama_user');
 
             if($this->form_validation->run() != false){
                 $kode=$kodevoucher;
-                $this->m_admin->simpan_job($kode,$catatanadmin,$namastaff,$user);
+                $this->m_admin->simpan_job($kode,$catatanadmin,$namastaff,$user,$admin);
                 echo $this->session->set_flashdata('msg','success');
                 redirect('dashboard');
             }else{
                 echo $this->session->set_flashdata('msg','validasi');
                 redirect('dashboard');
             }
-        }else {
+        }elseif(isset($_POST['Pending'])) {
             $this->form_validation->set_rules('catatanadmin','Catatan Admin','required');
             $this->form_validation->set_rules('country','Country','required');
+            $admin=$this->session->userdata('nama_user');
 
             if($this->form_validation->run() != false){
                 $kode=$kodevoucher;
-                $this->m_admin->simpan_job_user($kode,$catatanadmin,$namastaff);
+                $this->m_admin->simpan_job_user($kode,$catatanadmin,$namastaff,$admin);
                 echo $this->session->set_flashdata('msg','success');
                 redirect('dashboard');
             }else{
                 echo $this->session->set_flashdata('msg','validasi');
                 redirect('dashboard');          
         }
+    }elseif(isset($_POST['Finish'])) {
+        $kode=$kodevoucher;
+        $tglselesai=date('Y-m-d h:i:s');
+        $catatanadmin=strip_tags($this->input->post('catatanadmin'));
+        $admin=$this->session->userdata('nama_user');
+        $this->m_admin->finish_dokumen($kode,$catatanadmin,$tglselesai,$admin);
+        echo $this->session->set_flashdata('msg','success-finish');
+        redirect('dashboard');
     }	
             
     }
