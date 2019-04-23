@@ -7,13 +7,13 @@ class Model_user extends CI_Model {
         parent::__construct();
     }
     
-    function simpan_job($email,$uk,$kodevoucher,$juduldokumen,$catatan,$tglselesai){
-        $hsl=$this->db->query("insert into tbl_new_job(kode_voucher,email,unit_kerja,judul_dokumen,catatan,tanggal_selesai) values ('$kodevoucher','$email','$uk','$juduldokumen','$catatan','$tglselesai')");
+    function simpan_job($email,$uk,$kodevoucher,$juduldokumen,$catatan,$tglselesai,$tglmulaikerja,$tglselesaikerja){
+        $hsl=$this->db->query("insert into tbl_new_job(kode_voucher,email,unit_kerja,judul_dokumen,catatan,tanggal_selesai,tgl_mulai_kerja,tgl_selesai_kerja) values ('$kodevoucher','$email','$uk','$juduldokumen','$catatan','$tglselesai','$tglmulaikerja','$tglselesaikerja')");
         $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,catatan_user) values ('$kodevoucher','$catatan')");
 		return $hsl;
 	}
-    function pending_job($kodevoucherpending,$catatan){
-        $hsl=$this->db->query("update tbl_new_job set catatan='$catatan', status='2' where kode_voucher='$kodevoucherpending'");
+    function pending_job($kodevoucherpending,$catatan,$tglmulaikerja,$tglselesaikerja){
+        $hsl=$this->db->query("update tbl_new_job set catatan='$catatan', status='2', tgl_mulai_kerja='$tglmulaikerja', tgl_selesai_kerja='$tglselesaikerja' where kode_voucher='$kodevoucherpending'");
         $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,catatan_user) values ('$kodevoucherpending','$catatan')");
         return $hsl;
     }
