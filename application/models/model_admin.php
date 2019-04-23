@@ -23,8 +23,9 @@ class Model_admin extends CI_Model {
         $hsl=$this->db->query("SELECT tbl_new_job.*,DATE_FORMAT(tanggal_buat,'%d %M %Y %h%:%i%:%s') AS tgl FROM tbl_new_job WHERE status_pending='0'");
         return $hsl;
     }
-    function finish_dokumen($kode,$tglselesai){
-        $hsl=$this->db->query("update tbl_new_job set tgl_selesai_kerja='$tglselesai',status_pending='1' where kode_voucher='$kode'");
+    function finish_dokumen($kode,$catatanadmin,$tglselesai,$admin){
+        $hsl=$this->db->query("update tbl_new_job set catatan_admin='$catatanadmin',tgl_selesai_kerja='$tglselesai',status_pending='1' where kode_voucher='$kode'");
+        $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,nama,catatan_admin) values ('$kode','$admin','$catatanadmin')");
         return $hsl;
     }
     function get_pending_dokumen(){
@@ -64,9 +65,9 @@ class Model_admin extends CI_Model {
 		$query = $this->db->get('tbl_user');
 		return $query;
     }
-    function simpan_job($kode,$catatanadmin,$namastaff,$job){
+    function simpan_job($kode,$catatanadmin,$namastaff,$job,$admin){
         $hsl=$this->db->query("update tbl_new_job set catatan_admin='$catatanadmin',nama_staff='$namastaff',status_job='2',status_inbox_staff='1',status_pembaharuan_staff='1' where kode_voucher='$kode'");
-        $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,nama,catatan_admin) values ('$kode','$namastaff','$catatanadmin')");
+        $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,nama,catatan_admin) values ('$kode','$admin','$catatanadmin')");
 		return $hsl;
     }
     function simpan_job_admin($kode,$catatanadmin,$admin,$job){
@@ -74,9 +75,9 @@ class Model_admin extends CI_Model {
         $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,nama,catatan_admin) values ('$kode','$admin','$catatanadmin')");
         return $hsl;
     }
-    function simpan_job_user($kode,$catatanadmin,$namastaff){
+    function simpan_job_user($kode,$catatanadmin,$namastaff,$admin){
         $hsl=$this->db->query("update tbl_new_job set catatan_admin='$catatanadmin',nama_staff='$namastaff',status_job='2',status_inbox_staff='1',status_pembaharuan_staff='1' where kode_voucher='$kode'");
-        $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,nama,catatan_admin) values ('$kode','$namastaff','$catatanadmin')");
+        $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,nama,catatan_admin) values ('$kode','$admin','$catatanadmin')");
         return $hsl;
     }
     function simpan_user($nama,$nipeg,$divisi,$bagian,$level,$username,$p,$gambar){
