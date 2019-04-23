@@ -93,8 +93,8 @@
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                           <button id="b_admin" type="submit" class="btn btn-success submit">Kirim</button>
                           <button id="b_staff" type="submit" class="btn btn-primary submit">Kirim</button>
-                          <button id="b_user" type="submit" class="btn btn-primary submit">Job Pending</button>
-                          <a href="<?php echo base_url().'admin/c_admin/set_finish/'.$b['kode_voucher'];?>"><button id="b_finish" type="button" class="btn btn-success">Finish</button></a>
+                          <button id="b_user" name="Pending" value="Pending" type="submit" class="btn btn-primary submit">Job Pending</button>
+                          <button id="b_finish" name="Finish" value="Finish" type="submit" class="btn btn-success">Finish</button>
                           <button type="button" class="btn btn-danger tombol-delete" href="<?php echo base_url(); ?>admin/c_admin/hapus_job/<?= $b['kode_voucher']; ?>">Hapus</button>
                         </div>
                       </div>
