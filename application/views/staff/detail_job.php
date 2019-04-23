@@ -10,19 +10,19 @@
   <div class="x_panel">
     <div class="x_title" id="timer">
     <?php
-      $mulai = strtotime($b['tanggal_buat']);
-      $terlambat = strtotime($b['tanggal_selesai']);
+      $mulai = strtotime($b['tgl_mulai_kerja']);
+      $terlambat = strtotime($b['tgl_selesai_kerja']);
       $now = time();
         if($mulai > $now) : 
     ?>
       <div class="callout callout-success">
       <strong><i class="fa fa-clock-o"></i> Tidak Ada Tugas</strong>
       <br>
-      <span class="countdown" data-time="<?=date('Y-m-d H:i:s', strtotime($b['tanggal_buat']))?>">00 Hari, 00 Jam, 00 Menit, 00 Detik</strong><br/>
+      <span class="countdown" data-time="<?=date('Y-m-d H:i:s', strtotime($b['tgl_mulai_kerja']))?>">00 Hari, 00 Jam, 00 Menit, 00 Detik</strong><br/>
       </div>
       <?php elseif( $terlambat > $now ) : ?>
         <div class="callout callout-danger">
-          <h1 align="center"><i class="fa fa-clock-o"></i> <strong class="countdown" data-time="<?=date('Y-m-d H:i:s', strtotime($b['tanggal_selesai']))?>">00 Hari, 00 Jam, 00 Menit, 00 Detik</strong></h1><br/>
+          <h1 align="center"><i class="fa fa-clock-o"></i> <strong class="countdown" data-time="<?=date('Y-m-d H:i:s', strtotime($b['tgl_selesai_kerja']))?>">00 Hari, 00 Jam, 00 Menit, 00 Detik</strong></h1><br/>
           <h5 align="center">Batas Waktu Pengerjaan.</h5>
         </div>
       <?php else : ?>
@@ -123,7 +123,8 @@
             </div>
         </div>
 
-<script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+<!-- jQuery -->
+    <script src="<?php echo base_url('assets/vendors/jquery/dist/jquery.min.js'); ?>"></script>
  
 <!-- Script Timer -->
 <script src="<?=base_url()?>assets/build/js/token.js"></script>
