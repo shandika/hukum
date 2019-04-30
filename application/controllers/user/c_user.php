@@ -68,9 +68,10 @@ class C_user extends CI_Controller {
 	}
 
     function lihatData()
-    {               
+    {             
         $data['unit']=$this->m_user->get_unit_kerja();    
-        $data['data']=$this->m_user->get_all_dokumen();
+        $data['pending']=$this->m_user->get_pending_dokumen();
+        $data['finish']=$this->m_user->get_finish_dokumen();
         $data['title'] = "Data";
         $data['subtitle'] = "Job";
         $data['view_isi'] = "data_job";
