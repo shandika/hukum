@@ -26,6 +26,7 @@
                           <th>Catatan</th>
                           <th>Penanggung Jawab</th>
                           <th>Tanggal Buat</th>
+                          <th>Timer</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -42,6 +43,7 @@
                                 $status=$i['status'];
                                 $status_pending=$i['status_pending'];
                                 $staff=$i['nama_staff'];
+                                $tanggal_mulai=$i['tgl_mulai_kerja'];
                                               
                               ?>
                               <tr>
@@ -55,6 +57,23 @@
                                     ?></td>
                                 <td><?php echo $staff;?></td>
                                 <td><?php echo $tanggal_buat;?></td>
+                                <td>
+                                  <?php 
+                                  $awal  = new DateTime($tanggal_mulai); //Waktu awal
+
+                                  $akhir = new DateTime(); // Waktu sekarang atau akhir
+
+                                  $diff  = $awal->diff($akhir);
+
+                                  echo $diff->d . ' hari, ';
+
+                                  echo $diff->h . ' jam, ';
+
+                                  echo $diff->i . ' menit, ';
+
+                                  echo $diff->s . ' detik ';
+                                   ?>
+                                </td>
                                 <td style="text-align:right;">
                                 <a title="Lihat Detail Dokumen" href="<?php echo base_url().'user/c_user/get_job_detail/'.$kode_voucher;?>" class="btn btn-primary btn-xs"><i class="fa fa-plus-square-o"></i> Lihat </a>
                                 </td>
