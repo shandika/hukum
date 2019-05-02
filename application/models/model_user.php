@@ -34,4 +34,8 @@ class Model_user extends CI_Model {
         $hsl=$this->db->query("SELECT tbl_new_job.*,DATE_FORMAT(tanggal_buat,'%d %M %Y %h%:%i%:%s') AS tgl FROM tbl_new_job WHERE status_pending='1'");
         return $hsl;
     }
+    function get_job_by_kode($kode){
+        $hsl=$this->db->query("SELECT * FROM tbl_new_job where kode_voucher='$kode'");
+        return $hsl;
+    }
 }
