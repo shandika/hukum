@@ -83,7 +83,7 @@ class C_user extends CI_Controller {
         $kode=$this->uri->segment(4);
         $data['catatan']=$this->m_admin->catatan($kode);
         $kode=$this->uri->segment(4);
-        $data['data']=$this->m_admin->get_job_by_kode($kode);
+        $data['data']=$this->m_user->get_job_by_kode($kode);
         $data['title'] = "Job";
         $data['subtitle'] = "Detail";
         $data['view_isi'] = "data_job_detail";
