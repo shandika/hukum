@@ -129,8 +129,11 @@
           $(document).ready(function(){
             var selected = [];
             
-            $('#tabeldata2').dataTable( {
-              "aaSorting": [[ 4, "desc" ]]
+            $('#tabelpending').dataTable( {
+              "aaSorting": [[ 5, "desc" ]]
+              } );
+            $('#tabelfinish').dataTable( {
+              "aaSorting": [[ 5, "desc" ]]
               } );
               $('#tabelcatatan2').dataTable( {
               "aaSorting": [[ 0, "desc" ]]
