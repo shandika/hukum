@@ -50,6 +50,11 @@ class Model_admin extends CI_Model {
         
 		return $hsl;
     }
+    function reset_waktu($kode,$tgl){
+        $hsl=$this->db->query("UPDATE tbl_new_job SET tgl_mulai_kerja='$tgl' where kode_voucher='$kode'");
+        
+        return $hsl;
+    }
     function kirim_job($kode,$staff_nipeg,$staff_nama,$tglselesai,$job,$tglmulai){
         $hsl=$this->db->query("update tbl_new_job set status_pengerjaan='0',nipeg='$staff_nipeg',nama='$staff_nama',level_user='$job',tgl_mulai_kerja='$tglmulai',tgl_selesai_kerja='$tglselesai' where kode_voucher='$kode'");
 		return $hsl;
