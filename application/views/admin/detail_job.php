@@ -96,6 +96,7 @@
                           <button id="b_user" name="Pending" value="Pending" type="submit" class="btn btn-primary submit">Job Pending</button>
                           <button id="b_finish" name="Finish" value="Finish" type="submit" class="btn btn-success">Finish</button>
                           <button type="button" class="btn btn-danger tombol-delete" href="<?php echo base_url(); ?>admin/c_admin/hapus_job/<?= $b['kode_voucher']; ?>">Hapus</button>
+                          <button id="b_reset" name="Reset" value="Reset" type="submit" class="btn btn-danger">Reset Waktu</button>
                         </div>
                       </div>
 
