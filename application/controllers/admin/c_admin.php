@@ -345,6 +345,12 @@ class C_admin extends CI_Controller {
         $this->m_admin->finish_dokumen($kode,$catatanadmin,$tglselesai,$admin);
         echo $this->session->set_flashdata('msg','success-finish');
         redirect('dashboard');
+    }elseif (isset($_POST['Reset'])) {
+        $kode=$kodevoucher;
+        $tgl=date('Y-m-d h:i:s');
+        $this->m_admin->reset_waktu($kode,$tgl);
+        echo $this->session->set_flashdata('msg','success-finish');
+        redirect('dashboard');
     }	
             
     }
