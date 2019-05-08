@@ -29,6 +29,7 @@ class C_admin extends CI_Controller {
         $this->load->view('layout/template',$data);
     }
 
+    //
     function filter_tahun_chart_staff(){
         $tahun=$this->input->get('tahun');
         $kdn=$this->input->get('kdn');
@@ -285,6 +286,68 @@ class C_admin extends CI_Controller {
         	$data['subtitle'] = "Staff";
     	}
         $data['view_isi'] = "back_end/dashboard";
+        $this->load->view('layout/template', $data);
+    }
+
+    public function filter_tahun_staff_job() {
+        $tahun=$this->input->get('tahun_filter');
+        //MOHAMAD ADITYA
+        $data['ad_januari'] = $this->m_admin->get_staff_ad_januari_pending($tahun);
+        $data['ad_februari'] = $this->m_admin->get_staff_ad_februari_pending($tahun);
+        $data['ad_maret'] = $this->m_admin->get_staff_ad_maret_pending($tahun);
+        $data['ad_april'] = $this->m_admin->get_staff_ad_april_pending($tahun);
+        $data['ad_mei'] = $this->m_admin->get_staff_ad_mei_pending($tahun);
+        $data['ad_juni'] = $this->m_admin->get_staff_ad_juni_pending($tahun);
+        $data['ad_juli'] = $this->m_admin->get_staff_ad_juli_pending($tahun);
+        $data['ad_agustus'] = $this->m_admin->get_staff_ad_agustus_pending($tahun);
+        $data['ad_september'] = $this->m_admin->get_staff_ad_september_pending($tahun);
+        $data['ad_oktober'] = $this->m_admin->get_staff_ad_oktober_pending($tahun);
+        $data['ad_november'] = $this->m_admin->get_staff_ad_november_pending($tahun);
+        $data['ad_desember'] = $this->m_admin->get_staff_ad_desember_pending($tahun);
+        //NADYA ARRIZKA HUTAMI
+        $data['nd_januari'] = $this->m_admin->get_staff_nd_januari_pending($tahun);
+        $data['nd_februari'] = $this->m_admin->get_staff_nd_februari_pending($tahun);
+        $data['nd_maret'] = $this->m_admin->get_staff_nd_maret_pending($tahun);
+        $data['nd_april'] = $this->m_admin->get_staff_nd_april_pending($tahun);
+        $data['nd_mei'] = $this->m_admin->get_staff_nd_mei_pending($tahun);
+        $data['nd_juni'] = $this->m_admin->get_staff_nd_juni_pending($tahun);
+        $data['nd_juli'] = $this->m_admin->get_staff_nd_juli_pending($tahun);
+        $data['nd_agustus'] = $this->m_admin->get_staff_nd_agustus_pending($tahun);
+        $data['nd_september'] = $this->m_admin->get_staff_nd_september_pending($tahun);
+        $data['nd_oktober'] = $this->m_admin->get_staff_nd_oktober_pending($tahun);
+        $data['nd_november'] = $this->m_admin->get_staff_nd_november_pending($tahun);
+        $data['nd_desember'] = $this->m_admin->get_staff_nd_desember_pending($tahun);
+        //PUTTY OCTAVIANY PURWADIPUTRI
+        $data['pt_januari'] = $this->m_admin->get_staff_pt_januari_pending($tahun);
+        $data['pt_februari'] = $this->m_admin->get_staff_pt_februari_pending($tahun);
+        $data['pt_maret'] = $this->m_admin->get_staff_pt_maret_pending($tahun);
+        $data['pt_april'] = $this->m_admin->get_staff_pt_april_pending($tahun);
+        $data['pt_mei'] = $this->m_admin->get_staff_pt_mei_pending($tahun);
+        $data['pt_juni'] = $this->m_admin->get_staff_pt_juni_pending($tahun);
+        $data['pt_juli'] = $this->m_admin->get_staff_pt_juli_pending($tahun);
+        $data['pt_agustus'] = $this->m_admin->get_staff_pt_agustus_pending($tahun);
+        $data['pt_september'] = $this->m_admin->get_staff_pt_september_pending($tahun);
+        $data['pt_oktober'] = $this->m_admin->get_staff_pt_oktober_pending($tahun);
+        $data['pt_november'] = $this->m_admin->get_staff_pt_november_pending($tahun);
+        $data['pt_desember'] = $this->m_admin->get_staff_pt_desember_pending($tahun);
+        //RADEN SITI SARI DEWI
+        $data['rd_januari'] = $this->m_admin->get_staff_rd_januari_pending($tahun);
+        $data['rd_februari'] = $this->m_admin->get_staff_rd_februari_pending($tahun);
+        $data['rd_maret'] = $this->m_admin->get_staff_rd_maret_pending($tahun);
+        $data['rd_april'] = $this->m_admin->get_staff_rd_april_pending($tahun);
+        $data['rd_mei'] = $this->m_admin->get_staff_rd_mei_pending($tahun);
+        $data['rd_juni'] = $this->m_admin->get_staff_rd_juni_pending($tahun);
+        $data['rd_juli'] = $this->m_admin->get_staff_rd_juli_pending($tahun);
+        $data['rd_agustus'] = $this->m_admin->get_staff_rd_agustus_pending($tahun);
+        $data['rd_september'] = $this->m_admin->get_staff_rd_september_pending($tahun);
+        $data['rd_oktober'] = $this->m_admin->get_staff_rd_oktober_pending($tahun);
+        $data['rd_november'] = $this->m_admin->get_staff_rd_november_pending($tahun);
+        $data['rd_desember'] = $this->m_admin->get_staff_rd_desember_pending($tahun);
+
+        $data['data']=$this->m_admin->get_all_staff();
+        $data['title'] = "Dashboard";
+        $data['subtitle'] = "Staff Diagram";
+        $data['view_isi'] = "admin/staff_diagram";
         $this->load->view('layout/template', $data);
     }
   
