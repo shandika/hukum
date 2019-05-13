@@ -225,6 +225,12 @@
             $('#tabeldata').dataTable( {
               "aaSorting": [[ 4, "desc" ]]
               } );
+            $('#tabelbelumbaca').dataTable( {
+              "aaSorting": [[ 4, "desc" ]]
+              } );
+            $('#tabelsudahbaca').dataTable( {
+              "aaSorting": [[ 4, "desc" ]]
+              } );
               $('#tabelpending').dataTable( {
               "aaSorting": [[ 4, "desc" ]]
               } );
