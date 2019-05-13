@@ -39,7 +39,7 @@
         <div class="animate form login_form">
         <center><img src="<?php echo base_url().'public/images/Logo-PT-INTI_237-design.png'; ?>" width="200px"></center>
           <section class="login_content">
-            <a class="btn btn-default" href="<?php echo base_url('login');?>">Log in Admin</a>
+            <a class="btn btn-default" href="<?php echo base_url('login');?>">Log in</a>
             <a class="btn btn-default" href="<?php echo base_url('user/c_user/lihatData');?>">Lihat Data</a>
             <form name="form_job" action="<?php echo base_url('user/c_user/order_job');?>" method="post">              
               <div>
@@ -181,6 +181,14 @@
                   text: 'Silahkan Isi Seluruh Form !',
                   type: 'warning'
 	            });
+        </script>
+    <?php elseif($this->session->flashdata('msg')=='error-job'):?>
+        <script type="text/javascript">
+                Swal.fire({
+                  title: 'Perhatian !',
+                  text: 'Tidak Bisa Kirim Job Saat Hari Weekend !',
+                  type: 'warning'
+              });
         </script>
     <?php elseif($this->session->flashdata('msg')=='success-pending'):?>
         <script type="text/javascript">
