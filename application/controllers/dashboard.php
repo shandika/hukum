@@ -16,7 +16,8 @@ class Dashboard extends CI_Controller {
     public function index()
 	{
 		$data['unit']=$this->m_user->get_unit_kerja();
-		$data['data']=$this->m_admin->get_all_dokumen();
+		$data['data']=$this->m_admin->get_dokumen_belumdibaca();
+		$data['sudah']=$this->m_admin->get_dokumen_sudahdibaca();
 		$data['title'] = "Dashboard";
         $level = $this->session->userdata('level');
         if ($level == "admin") {
