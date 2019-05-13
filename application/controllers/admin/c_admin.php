@@ -410,11 +410,37 @@ class C_admin extends CI_Controller {
         redirect('dashboard');
     }elseif (isset($_POST['Reset'])) {
         $kode=$kodevoucher;
+        $tanggal_mulai = date('Y-m-d h:i:s');
         $tgl=date('Y-m-d h:i:s');
-        $this->m_admin->reset_waktu($kode,$tgl);
-        echo $this->session->set_flashdata('msg','success-finish');
-        redirect('dashboard');
-    }	
+        $day = date('D');
+
+            //Check hari
+                if($day=="Wed") {
+                    $tglselesaikerja=date('Y-m-d h:i:s', strtotime("+5 day", strtotime(date("Y-m-d h:i:s"))));
+                    $this->m_admin->reset_waktu($kode,$tgl,$tglselesaikerja);
+                    echo $this->session->set_flashdata('msg','success-reset');
+                    redirect('dashboard');
+                        }elseif($day=="Thu"){
+                          $tglselesaikerja2=date('Y-m-d h:i:s', strtotime("+6 day", strtotime(date("Y-m-d h:i:s"))));  
+                          $this->m_admin->reset_waktu2($kode,$tgl,$tglselesaikerja2);
+                          echo $this->session->set_flashdata('msg','success-reset');
+                          redirect('dashboard');
+                        }elseif ($day=="Fri") {
+                            $tglselesaikerja3=date('Y-m-d h:i:s', strtotime("+7 day", strtotime(date("Y-m-d h:i:s"))));  
+                            $this->m_admin->reset_waktu3($kode,$tgl,$tglselesaikerja3);
+                            echo $this->session->set_flashdata('msg','success-reset');
+                            redirect('dashboard');
+                        }elseif($day=="Sun" || $day=="Sat") {
+                            echo $this->session->set_flashdata('msg','error-reset');
+                            redirect('dashboard');
+                        }else{
+                            $tglselesaikerja4=date('Y-m-d h:i:s', strtotime("+3 day", strtotime(date("Y-m-d h:i:s"))));  
+                            $this->m_admin->reset_waktu4($kode,$tgl,$tglselesaikerja4);
+                            echo $this->session->set_flashdata('msg','success-reset');
+                            redirect('dashboard');
+                        }
+
+            }	
             
     }
 
