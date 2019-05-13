@@ -38,19 +38,104 @@
     </div>
     </div>
 
-    <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="col-md-12 col-sm-6 col-xs-12">
+  <div class="" role="tabpanel" data-example-id="togglable-tabs">
+    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Belum Dibaca</a>
+      </li>
+      <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="true">Sudah Dibaca</a>
+      </li>
+    </ul>
+      <div id="myTabContent" class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+        <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_title" id="dokumenmasuk">
-                    <h2>Data Dokumen Masuk<small></small></h2>
+                  <div class="x_title">
+                    <h2>Data Dokumen Masuk<small>Belum Dibaca</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-					
-                    <table id="tabeldata" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <table id="tabelbelumbaca" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>Kode Voucher</th>
+                          <th>Judul Dokumen</th>
+                          <th>Catatan</th>
+                          <th>Penanggung Jawab</th>
+                          <th>Tanggal Buat</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php
+                    
+                              foreach ($data->result_array() as $i) :
+                               $kode_voucher=$i['kode_voucher'];
+                               $email=$i['email'];
+                               $unit_kerja=$i['unit_kerja'];
+                               $judul_dokumen=$i['judul_dokumen'];
+                               $catatan=$i['catatan'];
+                               $tanggal_buat=$i['tgl'];
+                               $status=$i['status'];
+                               $statusjob=$i['status_job'];
+                               $staff=$i['nama_staff'];
+                                    
+                    ?>
+                              
+                              <tr>
+                                <td><?php echo $kode_voucher;?></td>
+                                <td><?php echo $judul_dokumen;?></td>
+                                <td><?php
+                                    $jumlah_karakter = 30;
+                                    $cetak = substr($catatan,0,$jumlah_karakter); 
+                                    echo $cetak,"..."; 
+                                    ?></td>
+                                <td><?php echo $staff;?></td>
+                                <td><?php echo $tanggal_buat;?></td>
+                                <td>
+                                <?php 
+                                if ($status==0) {
+                                  echo '<button type="button" class="btn btn-danger btn-xs">Belum Dilihat</button>';
+                                } if($status==1){
+                                  echo '<button type="button" class="btn btn-success btn-xs">Sudah Dilihat</button>';
+                                } if($status==2){
+                                  echo '<button type="button" class="btn btn-warning btn-xs">Pembeharuan Data User</button>';
+                                }if($status==3) {
+                                  echo '<button type="button" class="btn btn-warning btn-xs">Pembeharuan Data Staff</button>';
+                                }if($statusjob==2){
+                                  echo '<button type="button" class="btn btn-info btn-xs">Dikerjakan Staff</button>';
+                                } if($statusjob==3){
+                                  echo '<button type="button" class="btn btn-primary btn-xs">Dikerjakan Admin</button>';
+                                }
+                                ?>
+                                </td>
+                                <td style="text-align:right;">
+                                <a title="Lihat Detail Dokumen" href="<?php echo base_url().'admin/c_admin/get_job_detail/'.$kode_voucher;?>" class="btn btn-primary btn-xs"><i class="fa fa-plus-square-o"></i> Lihat </a>
+                                </td>
+                              </tr>
+                      <?php endforeach;?>
+                      </tbody>
+                    </table>
+          
+          
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade active" id="tab_content2" aria-labelledby="profile-tab">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Data Dokumen Masuk<small>Sudah Dibaca</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table id="tabelsudahbaca" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
                           <th>Kode Voucher</th>
@@ -65,58 +150,62 @@
                       <tbody>
                         <?php
                     
-                    foreach ($data->result_array() as $i) :
-                       $kode_voucher=$i['kode_voucher'];
-                       $email=$i['email'];
-                       $unit_kerja=$i['unit_kerja'];
-                       $judul_dokumen=$i['judul_dokumen'];
-                       $catatan=$i['catatan'];
-                       $tanggal_buat=$i['tgl'];
-                       $status=$i['status'];
-                       $statusjob=$i['status_job'];
-                       $staff=$i['nama_staff'];
+                    foreach ($sudah->result_array() as $i) :
+                               $kode_voucher=$i['kode_voucher'];
+                               $email=$i['email'];
+                               $unit_kerja=$i['unit_kerja'];
+                               $judul_dokumen=$i['judul_dokumen'];
+                               $catatan=$i['catatan'];
+                               $tanggal_buat=$i['tgl'];
+                               $status=$i['status'];
+                               $statusjob=$i['status_job'];
+                               $staff=$i['nama_staff'];
                                     
                     ?>
                     
-                    <tr>
-                      <td><?php echo $kode_voucher;?></td>
-                      <td><?php echo $judul_dokumen;?></td>
-                      <td><?php
-                          $jumlah_karakter = 30;
-                          $cetak = substr($catatan,0,$jumlah_karakter); 
-                          echo $cetak,"..."; 
-                          ?></td>
-                      <td><?php echo $staff;?></td>
-                      <td><?php echo $tanggal_buat;?></td>
-                      <td>
-                      <?php 
-                      if ($status==0) {
-                        echo '<button type="button" class="btn btn-danger btn-xs">Belum Dilihat</button>';
-                      } if($status==1){
-                        echo '<button type="button" class="btn btn-success btn-xs">Sudah Dilihat</button>';
-                      } if($status==2){
-                        echo '<button type="button" class="btn btn-warning btn-xs">Pembeharuan Data User</button>';
-                      }if($status==3) {
-                        echo '<button type="button" class="btn btn-warning btn-xs">Pembeharuan Data Staff</button>';
-                      }if($statusjob==2){
-                        echo '<button type="button" class="btn btn-info btn-xs">Dikerjakan Staff</button>';
-                      } if($statusjob==3){
-                        echo '<button type="button" class="btn btn-primary btn-xs">Dikerjakan Admin</button>';
-                      }
-                      ?>
-                      </td>
-                      <td style="text-align:right;">
-                      <a title="Lihat Detail Dokumen" href="<?php echo base_url().'admin/c_admin/get_job_detail/'.$kode_voucher;?>" class="btn btn-primary btn-xs"><i class="fa fa-plus-square-o"></i> Lihat </a>
-                      </td>
-                    </tr>
+                              <tr>
+                                <td><?php echo $kode_voucher;?></td>
+                                <td><?php echo $judul_dokumen;?></td>
+                                <td><?php
+                                    $jumlah_karakter = 30;
+                                    $cetak = substr($catatan,0,$jumlah_karakter); 
+                                    echo $cetak,"..."; 
+                                    ?></td>
+                                <td><?php echo $staff;?></td>
+                                <td><?php echo $tanggal_buat;?></td>
+                                <td>
+                                <?php 
+                                if ($status==0) {
+                                  echo '<button type="button" class="btn btn-danger btn-xs">Belum Dilihat</button>';
+                                } if($status==1){
+                                  echo '<button type="button" class="btn btn-success btn-xs">Sudah Dilihat</button>';
+                                } if($status==2){
+                                  echo '<button type="button" class="btn btn-warning btn-xs">Pembeharuan Data User</button>';
+                                }if($status==3) {
+                                  echo '<button type="button" class="btn btn-warning btn-xs">Pembeharuan Data Staff</button>';
+                                }if($statusjob==2){
+                                  echo '<button type="button" class="btn btn-info btn-xs">Dikerjakan Staff</button>';
+                                } if($statusjob==3){
+                                  echo '<button type="button" class="btn btn-primary btn-xs">Dikerjakan Admin</button>';
+                                }
+                                ?>
+                                </td>
+                                <td style="text-align:right;">
+                                <a title="Lihat Detail Dokumen" href="<?php echo base_url().'admin/c_admin/get_job_detail/'.$kode_voucher;?>" class="btn btn-primary btn-xs"><i class="fa fa-plus-square-o"></i> Lihat </a>
+                                </td>
+                              </tr>
             <?php endforeach;?>
+                        </tr>
                       </tbody>
                     </table>
-					
-					
+          
+          
                   </div>
                 </div>
               </div>
+        </div>
+      </div>
+  </div>
               
               <?php
               //Corporate Finance Bulan Januari
