@@ -421,12 +421,12 @@ class C_admin extends CI_Controller {
                     echo $this->session->set_flashdata('msg','success-reset');
                     redirect('dashboard');
                         }elseif($day=="Thu"){
-                          $tglselesaikerja2=date('Y-m-d h:i:s', strtotime("+6 day", strtotime(date("Y-m-d h:i:s"))));  
+                          $tglselesaikerja2=date('Y-m-d h:i:s', strtotime("+5 day", strtotime(date("Y-m-d h:i:s"))));  
                           $this->m_admin->reset_waktu2($kode,$tgl,$tglselesaikerja2);
                           echo $this->session->set_flashdata('msg','success-reset');
                           redirect('dashboard');
                         }elseif ($day=="Fri") {
-                            $tglselesaikerja3=date('Y-m-d h:i:s', strtotime("+7 day", strtotime(date("Y-m-d h:i:s"))));  
+                            $tglselesaikerja3=date('Y-m-d h:i:s', strtotime("+5 day", strtotime(date("Y-m-d h:i:s"))));  
                             $this->m_admin->reset_waktu3($kode,$tgl,$tglselesaikerja3);
                             echo $this->session->set_flashdata('msg','success-reset');
                             redirect('dashboard');
