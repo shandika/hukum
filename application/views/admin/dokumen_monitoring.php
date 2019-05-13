@@ -96,6 +96,7 @@
                           <th>Catatan</th>
                           <th>Penanggung Jawab</th>
                           <th>Tanggal Buat</th>
+                          <th>Tanggal Selesai</th>
                           <th>Status</th>
                           <th>Action</th>
                         </tr>
@@ -113,6 +114,7 @@
                       $status=$i['status'];
                       $status_pending=$i['status_pending'];
                       $staff=$i['nama_staff'];
+                      $tgl_selesai_kerja=$i['tgl_selesai_kerja'];
                                     
                     ?>
                     
@@ -126,6 +128,7 @@
                           ?></td>
                       <td><?php echo $staff;?></td>
                       <td><?php echo $tanggal_buat;?></td>
+                      <td><?php echo $tgl_selesai_kerja;?></td>
                       <td>
                       <?php 
                       if ($status_pending==0) {
