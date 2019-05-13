@@ -1594,6 +1594,14 @@
               type: 'success'
 	        });
     </script>
+    <?php elseif($this->session->flashdata('msg')=='success-reset'):?>
+    <script type="text/javascript">
+            Swal.fire({
+              title: 'Terimakasih',
+              text: 'Waktu Sudah Direset',
+              type: 'success'
+          });
+    </script>
     <?php elseif($this->session->flashdata('msg')=='validasi'):?>
         <script type="text/javascript">
                 Swal.fire({
@@ -1601,6 +1609,14 @@
                   text: 'Silahkan Isi Seluruh Form !',
                   type: 'warning'
 	            });
+        </script>
+    <?php elseif($this->session->flashdata('msg')=='error-reset'):?>
+        <script type="text/javascript">
+                Swal.fire({
+                  title: 'Perhatian !',
+                  text: 'Anda Tidak Dapat Mereset Di Waktu Weekend',
+                  type: 'warning'
+              });
         </script>
     <?php elseif($this->session->flashdata('msg')=='success'):?>
         <script type="text/javascript">
