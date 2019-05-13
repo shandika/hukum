@@ -13,12 +13,13 @@
       $mulai = strtotime($b['tgl_mulai_kerja']);
       $terlambat = strtotime($b['tgl_selesai_kerja']);
       $now = time();
-        if($mulai > $now) : 
+        if($mulai == null) : 
     ?>
       <div class="callout callout-success">
-      <strong><i class="fa fa-clock-o"></i> Tidak Ada Tugas</strong>
+      <h4 align="center">Dokumen Berada di Admin.</h4>
+      <h4 align="center">Belum Ditanggapi.</h4>
       <br>
-      <span class="countdown" data-time="<?=date('Y-m-d H:i:s', strtotime($b['tgl_mulai_kerja']))?>">00 Hari, 00 Jam, 00 Menit, 00 Detik</strong><br/>
+      
       </div>
       <?php elseif( $terlambat > $now ) : ?>
         <div class="callout callout-danger">
