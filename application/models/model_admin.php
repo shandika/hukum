@@ -23,6 +23,14 @@ class Model_admin extends CI_Model {
         $hsl=$this->db->query("SELECT tbl_new_job.*,DATE_FORMAT(tanggal_buat,'%d %M %Y %h%:%i%:%s') AS tgl FROM tbl_new_job WHERE status_pending='0'");
         return $hsl;
     }
+    function get_dokumen_belumdibaca(){
+        $hsl=$this->db->query("SELECT tbl_new_job.*,DATE_FORMAT(tanggal_buat,'%d %M %Y %h%:%i%:%s') AS tgl FROM tbl_new_job WHERE status_pending='0' AND status='0' OR status='2' OR status='3'");
+        return $hsl;
+    }
+    function get_dokumen_sudahdibaca(){
+        $hsl=$this->db->query("SELECT tbl_new_job.*,DATE_FORMAT(tanggal_buat,'%d %M %Y %h%:%i%:%s') AS tgl FROM tbl_new_job WHERE status_pending='0' AND status='1'");
+        return $hsl;
+    }
     function finish_dokumen($kode,$catatanadmin,$tglselesai,$admin){
         $hsl=$this->db->query("update tbl_new_job set catatan_admin='$catatanadmin',tgl_selesai_kerja='$tglselesai',status_pending='1' where kode_voucher='$kode'");
         $hsl.=$this->db->query("insert into tbl_catatan(kode_voucher,nama,catatan_admin) values ('$kode','$admin','$catatanadmin')");
