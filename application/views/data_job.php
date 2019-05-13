@@ -65,13 +65,38 @@
 
                                   $diff  = $awal->diff($akhir);
 
-                                  echo $diff->d . ' hari, ';
+                                  $daterange     = new DatePeriod($awal, new DateInterval('P1D'), $akhir);
+                                  //mendapatkan range antara dua tanggal dan di looping
+                                  $i=0;
+                                  $x=0;
+                                  $j=0;
+                                  $akhir=1;
 
-                                  echo $diff->h . ' jam, ';
+                                  foreach($daterange as $date){
+                                  $daterange     = $date->format("Y-m-d h:i:s");
+                                  $datetime     = DateTime::createFromFormat('Y-m-d h:i:s', $daterange);
 
-                                  echo $diff->i . ' menit, ';
+                                  //Convert tanggal untuk mendapatkan nama hari
+                                  $day         = $datetime->format('D');
 
-                                  echo $diff->s . ' detik ';
+                                  //Check untuk menghitung yang bukan hari sabtu dan minggu
+                                  if($day!="Sun" && $day!="Sat") {
+                                      //echo $i;
+                                      $x    +=    $akhir-$i;
+                                  }
+                                  $akhir++;
+                                  $i++;
+                                  }    
+                                  if($x>1){
+                                    echo $x. ' ' . 'hari, ';
+                                    echo $diff->h. ' '. 'jam ';
+                                    echo $diff->i. ' '. 'menit ';
+                                    
+                                  }else{
+                                    echo '0'. ' ' . 'hari, ';
+                                    echo $diff->h. ' ' . 'jam ';
+                                    echo $diff->i. ' ' . 'menit ';
+                                  }
                                    ?>
                                 </td>
                                 <td style="text-align:right;">
@@ -106,6 +131,7 @@
                           <th>Catatan</th>
                           <th>Penanggung Jawab</th>
                           <th>Tanggal Buat</th>
+                          <th>Tanggal Selesai</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -122,6 +148,7 @@
                       $status=$i['status'];
                       $status_pending=$i['status_pending'];
                       $staff=$i['nama_staff'];
+                      $tgl_selesai_kerja=$i['tgl_selesai_kerja'];
                                     
                     ?>
                     
@@ -135,6 +162,7 @@
                           ?></td>
                       <td><?php echo $staff;?></td>
                       <td><?php echo $tanggal_buat;?></td>
+                      <td><?php echo $tgl_selesai_kerja;?></td>
                       <td style="text-align:right;">
                       <a title="Lihat Detail Dokumen" href="<?php echo base_url().'user/c_user/get_job_detail/'.$kode_voucher;?>" class="btn btn-primary btn-xs"><i class="fa fa-plus-square-o"></i> Lihat </a>
                       </td>
