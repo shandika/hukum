@@ -47,7 +47,11 @@
                               
                               <tr>
                                 <td><?php echo $kode_voucher;?></td>
-                                <td><?php echo $judul_dokumen;?></td>
+                                <td><?php
+                                    $jumlah_karakter = 30;
+                                    $cetak = substr($judul_dokumen,0,$jumlah_karakter); 
+                                    echo $cetak,"..."; 
+                                    ?></td>
                                 <td><?php
                                     $jumlah_karakter = 30;
                                     $cetak = substr($catatan,0,$jumlah_karakter); 
