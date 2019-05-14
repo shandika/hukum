@@ -87,7 +87,11 @@
                               
                               <tr>
                                 <td><?php echo $kode_voucher;?></td>
-                                <td><?php echo $judul_dokumen;?></td>
+                                <td><?php
+                                    $jumlah_karakter = 30;
+                                    $cetak = substr($judul_dokumen,0,$jumlah_karakter); 
+                                    echo $cetak,"..."; 
+                                    ?></td>
                                 <td><?php
                                     $jumlah_karakter = 30;
                                     $cetak = substr($catatan,0,$jumlah_karakter); 
@@ -165,7 +169,11 @@
                     
                               <tr>
                                 <td><?php echo $kode_voucher;?></td>
-                                <td><?php echo $judul_dokumen;?></td>
+                                <td><?php
+                                    $jumlah_karakter = 30;
+                                    $cetak = substr($judul_dokumen,0,$jumlah_karakter); 
+                                    echo $cetak,"..."; 
+                                    ?></td>
                                 <td><?php
                                     $jumlah_karakter = 30;
                                     $cetak = substr($catatan,0,$jumlah_karakter); 
@@ -206,6 +214,228 @@
         </div>
       </div>
   </div>
+
+  <?php
+                //MOHAMAD ADITYA Hari Senin
+                if(!empty($ad_senin)) {
+                  foreach($ad_senin as $data){
+                      $jumlah1_5_1[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_1[] = 0;
+                    }
+                //MOHAMAD ADITYA Hari Selasa
+                if(!empty($ad_selasa)) {
+                  foreach($ad_selasa as $data){
+                      $jumlah1_5_2[] = (float) $data->jumlah;
+                      }
+                    }else{
+                        $jumlah1_5_2[] = 0;
+                  }
+                //MOHAMAD ADITYA Hari Rabu
+                if(!empty($ad_rabu)) {
+                  foreach($ad_rabu as $data){
+                      $jumlah1_5_3[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_3[] = 0;
+                    } 
+                //MOHAMAD ADITYA Hari Kamis
+                if(!empty($ad_kamis)) {
+                foreach($ad_kamis as $data){
+                  $jumlah1_5_4[] = (float) $data->jumlah;
+                  }
+                }else{
+                  $jumlah1_5_4[] = 0;
+                }
+                //MOHAMAD ADITYA Hari Jumat
+                if(!empty($ad_jumat)) {
+                  foreach($ad_jumat as $data){
+                      $jumlah1_5_5[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_5[] = 0;
+                    }
+                //NADYA ARRIZKA HUTAMI Hari Senin
+                if(!empty($nd_senin)) {
+                  foreach($nd_senin as $data){
+                      $jumlah1_6_1[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_6_1[] = 0;
+                    }
+                //NADYA ARRIZKA HUTAMI Hari Selasa
+                if(!empty($nd_selasa)) {
+                  foreach($nd_selasa as $data){
+                      $jumlah1_6_2[] = (float) $data->jumlah;
+                      }
+                    }else{
+                        $jumlah1_6_2[] = 0;
+                  }
+                //NADYA ARRIZKA HUTAMI Hari Rabu
+                if(!empty($nd_rabu)) {
+                  foreach($nd_rabu as $data){
+                      $jumlah1_6_3[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_6_3[] = 0;
+                    } 
+                //NADYA ARRIZKA HUTAMI Hari Kamis
+                if(!empty($nd_kamis)) {
+                foreach($nd_kamis as $data){
+                  $jumlah1_6_4[] = (float) $data->jumlah;
+                  }
+                }else{
+                  $jumlah1_6_4[] = 0;
+                }
+                //NADYA ARRIZKA HUTAMI Hari Jumat
+                if(!empty($nd_jumat)) {
+                  foreach($nd_jumat as $data){
+                      $jumlah1_6_5[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_6_5[] = 0;
+                    }
+                //PUTTY OCTAVIANY PURWADIPUTRI Hari Senin
+                if(!empty($pt_senin)) {
+                  foreach($pt_senin as $data){
+                      $jumlah1_7_1[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_7_1[] = 0;
+                    }
+                //PUTTY OCTAVIANY PURWADIPUTRI Hari Selasa
+                if(!empty($pt_selasa)) {
+                  foreach($pt_selasa as $data){
+                      $jumlah1_7_2[] = (float) $data->jumlah;
+                      }
+                    }else{
+                        $jumlah1_7_2[] = 0;
+                  }
+                //PUTTY OCTAVIANY PURWADIPUTRI Hari Rabu
+                if(!empty($pt_rabu)) {
+                  foreach($pt_rabu as $data){
+                      $jumlah1_7_3[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_7_3[] = 0;
+                    } 
+                //PUTTY OCTAVIANY PURWADIPUTRI Hari Kamis
+                if(!empty($pt_kamis)) {
+                foreach($pt_kamis as $data){
+                  $jumlah1_7_4[] = (float) $data->jumlah;
+                  }
+                }else{
+                  $jumlah1_7_4[] = 0;
+                }
+                //PUTTY OCTAVIANY PURWADIPUTRI Hari Jumat
+                if(!empty($pt_jumat)) {
+                  foreach($pt_jumat as $data){
+                      $jumlah1_7_5[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_7_5[] = 0;
+                    }
+                //RADEN SITI SARI DEWI Hari Senin
+                if(!empty($rd_senin)) {
+                  foreach($rd_senin as $data){
+                      $jumlah1_8_1[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_8_1[] = 0;
+                    }
+                //RADEN SITI SARI DEWI Hari Selasa
+                if(!empty($rd_selasa)) {
+                  foreach($rd_selasa as $data){
+                      $jumlah1_8_2[] = (float) $data->jumlah;
+                      }
+                    }else{
+                        $jumlah1_8_2[] = 0;
+                  }
+                //RADEN SITI SARI DEWI Hari Rabu
+                if(!empty($rd_rabu)) {
+                  foreach($rd_rabu as $data){
+                      $jumlah1_8_3[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_8_3[] = 0;
+                    } 
+                //RADEN SITI SARI DEWI Hari Kamis
+                if(!empty($rd_kamis)) {
+                foreach($rd_kamis as $data){
+                  $jumlah1_8_4[] = (float) $data->jumlah;
+                  }
+                }else{
+                  $jumlah1_8_4[] = 0;
+                }
+                //RADEN SITI SARI DEWI Hari Jumat
+                if(!empty($rd_jumat)) {
+                  foreach($rd_jumat as $data){
+                      $jumlah1_8_5[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_8_5[] = 0;
+                    }
+                
+            ?>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Bar graph <small>Month</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                  <form action="<?php echo base_url().'admin/c_admin/filter_bulan_staff_job/';?>" method="get">
+                  <div class="col-md-2 col-sm-2 col-xs-2">
+                  <select class="form-control" name="bulan_filter">
+                    <option selected="" disabled="" value="0">--Pilih Bulan--</option>
+                    <option value="January">Januari</option>
+                    <option value="February">Februari</option>
+                    <option value="March">Maret</option>
+                    <option value="April">April</option>
+                    <option value="May">Mei</option>
+                    <option value="June">Juni</option>
+                    <option value="July">Juli</option>
+                    <option value="August">Agustus</option>
+                    <option value="September">September</option>
+                    <option value="October">Oktober</option>
+                    <option value="November">November</option>
+                    <option value="December">Desember</option>
+        
+                    <?php
+                    
+                    $pilih3 = $_GET['bulan_filter'];
+                    
+                    ?>
+                  </select>
+                  </div>
+                  <button type="submit" class="btn-sm btn-default">Filter</button>
+                  </form>
+                  <div id="graphBulan" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="clearfix"></div>
               
               <?php
               //Corporate Finance Bulan Januari
@@ -1194,13 +1424,13 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                  <form action="<?php echo base_url().'admin/c_admin/filter_tahun_staff/';?>" method="get">
+                  <form action="<?php echo base_url().'admin/c_admin/filter_tahun_staff_job/';?>" method="get">
                   <div class="col-md-2 col-sm-2 col-xs-2">
-                  <select class="form-control" name="tahun_staff">
+                  <select class="form-control" name="tahun_filter">
                   <option selected="" disabled="" value="0">--Pilih Tahun--</option>
                     <?php
                     $thn_skr = date('Y') - 5;
-                    $pilih2 = $_GET['tahun_staff'];
+                    $pilih2 = $_GET['tahun_filter'];
                     for($x = $thn_skr; $x < $thn_skr + 10; $x++){
                       ?>
                     <option value="<?php echo $x ?>" <?php if($x == $pilih2){ echo 'selected';} ?>><?php echo $x ?></option>
@@ -1218,6 +1448,7 @@
             </div>
           </div>
         </div>
+      </div>
             <div class="clearfix"></div>
 
             <?php
@@ -1801,6 +2032,70 @@ Highcharts.chart('graph', {
            <?php echo json_encode($jumlah1_4_4);?>,<?php echo json_encode($jumlah1_4_5);?>,<?php echo json_encode($jumlah1_4_6);?>,
            <?php echo json_encode($jumlah1_4_7);?>,<?php echo json_encode($jumlah1_4_8);?>,<?php echo json_encode($jumlah1_4_9);?>,
            <?php echo json_encode($jumlah1_4_10);?>,<?php echo json_encode($jumlah1_4_11);?>,<?php echo json_encode($jumlah1_4_12);?>
+           ]
+  }]
+});
+</script>
+<script>
+Highcharts.chart('graphBulan', {
+  chart: {
+    type: 'column'
+  },
+  title: {
+    text: 'Chart Data Staff Hukum'
+  },
+  subtitle: {
+    text: 'per Bulan <?php echo $pilih3; ?>'
+  },
+  xAxis: {
+    categories: [
+      'Senin',
+      'Selasa',
+      'Rabu',
+      'Kamis',
+      'Jumat',
+    ],
+    crosshair: true
+  },
+  yAxis: {
+    min: 0,
+    title: {
+      text: 'Dokumen'
+    }
+  },
+  tooltip: {
+    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+      '<td style="padding:0"><b>{point.y:.0f} dokumen</b></td></tr>',
+    footerFormat: '</table>',
+    shared: true,
+    useHTML: true
+  },
+  plotOptions: {
+    column: {
+      pointPadding: 0.2,
+      borderWidth: 0
+    }
+  },
+  series: [{
+    name: 'MOHAMAD ADITYA',
+    data: [<?php echo json_encode($jumlah1_5_1);?>,<?php echo json_encode($jumlah1_5_2);?>,<?php echo json_encode($jumlah1_5_3);?>,
+           <?php echo json_encode($jumlah1_5_4);?>,<?php echo json_encode($jumlah1_5_5);?>
+           ]
+  }, {
+    name: 'NADYA ARRIZKA HUTAMI',
+    data: [<?php echo json_encode($jumlah1_6_1);?>,<?php echo json_encode($jumlah1_6_2);?>,<?php echo json_encode($jumlah1_6_3);?>,
+           <?php echo json_encode($jumlah1_6_4);?>,<?php echo json_encode($jumlah1_6_5);?>
+           ]
+  }, {
+    name: 'PUTTY OCTAVIANY PURWADIPUTRI',
+    data: [<?php echo json_encode($jumlah1_7_1);?>,<?php echo json_encode($jumlah1_7_2);?>,<?php echo json_encode($jumlah1_7_3);?>,
+           <?php echo json_encode($jumlah1_7_4);?>,<?php echo json_encode($jumlah1_7_5);?>
+           ]
+  }, {
+    name: 'RADEN SITI SARI DEWI',
+    data: [<?php echo json_encode($jumlah1_8_1);?>,<?php echo json_encode($jumlah1_8_2);?>,<?php echo json_encode($jumlah1_8_3);?>,
+           <?php echo json_encode($jumlah1_8_4);?>,<?php echo json_encode($jumlah1_8_5);?>
            ]
   }]
 });
