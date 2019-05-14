@@ -275,6 +275,19 @@ class C_admin extends CI_Controller {
         $data['rd_oktober'] = $this->m_admin->get_staff_rd_oktober($tahun);
         $data['rd_november'] = $this->m_admin->get_staff_rd_november($tahun);
         $data['rd_desember'] = $this->m_admin->get_staff_rd_desember($tahun);
+        //EZRA LONTOH
+        $data['ez_januari'] = $this->m_admin->get_staff_ez_januari($tahun);
+        $data['ez_februari'] = $this->m_admin->get_staff_ez_februari($tahun);
+        $data['ez_maret'] = $this->m_admin->get_staff_ez_maret($tahun);
+        $data['ez_april'] = $this->m_admin->get_staff_ez_april($tahun);
+        $data['ez_mei'] = $this->m_admin->get_staff_ez_mei($tahun);
+        $data['ez_juni'] = $this->m_admin->get_staff_ez_juni($tahun);
+        $data['ez_juli'] = $this->m_admin->get_staff_ez_juli($tahun);
+        $data['ez_agustus'] = $this->m_admin->get_staff_ez_agustus($tahun);
+        $data['ez_september'] = $this->m_admin->get_staff_ez_september($tahun);
+        $data['ez_oktober'] = $this->m_admin->get_staff_ez_oktober($tahun);
+        $data['ez_november'] = $this->m_admin->get_staff_ez_november($tahun);
+        $data['ez_desember'] = $this->m_admin->get_staff_ez_desember($tahun);
 
 		$data['unit']=$this->m_user->get_unit_kerja();
 		$data['data']=$this->m_admin->get_all_dokumen();
@@ -285,7 +298,7 @@ class C_admin extends CI_Controller {
         } else{
         	$data['subtitle'] = "Staff";
     	}
-        $data['view_isi'] = "back_end/dashboard";
+        $data['view_isi'] = "admin/staff_diagram";
         $this->load->view('layout/template', $data);
     }
 
@@ -344,10 +357,59 @@ class C_admin extends CI_Controller {
         $data['rd_november'] = $this->m_admin->get_staff_rd_november_pending($tahun);
         $data['rd_desember'] = $this->m_admin->get_staff_rd_desember_pending($tahun);
 
-        $data['data']=$this->m_admin->get_all_staff();
+        $data['unit']=$this->m_user->get_unit_kerja();
+        $data['data']=$this->m_admin->get_dokumen_belumdibaca();
+        $data['sudah']=$this->m_admin->get_dokumen_sudahdibaca();
         $data['title'] = "Dashboard";
-        $data['subtitle'] = "Staff Diagram";
-        $data['view_isi'] = "admin/staff_diagram";
+        $level = $this->session->userdata('level');
+        if ($level == "admin") {
+            $data['subtitle'] = "Admin";
+        } else{
+            $data['subtitle'] = "Staff";
+        }
+        $data['view_isi'] = "back_end/dashboard";
+        $this->load->view('layout/template', $data);
+    }
+
+    public function filter_bulan_staff_job() {
+        $bulan=$this->input->get('bulan_filter');
+        $tahun=date('Y');
+        //MOHAMAD ADITYA
+        $data['ad_senin'] = $this->m_admin->get_staff_ad_senin_pending($bulan,$tahun);
+        $data['ad_selasa'] = $this->m_admin->get_staff_ad_selasa_pending($bulan,$tahun);
+        $data['ad_rabu'] = $this->m_admin->get_staff_ad_rabu_pending($bulan,$tahun);
+        $data['ad_kamis'] = $this->m_admin->get_staff_ad_kamis_pending($bulan,$tahun);
+        $data['ad_jumat'] = $this->m_admin->get_staff_ad_jumat_pending($bulan,$tahun);
+        //NADYA ARRIZKA HUTAMI
+        $data['nd_senin'] = $this->m_admin->get_staff_nd_senin_pending($bulan,$tahun);
+        $data['nd_selasa'] = $this->m_admin->get_staff_nd_selasa_pending($bulan,$tahun);
+        $data['nd_rabu'] = $this->m_admin->get_staff_nd_rabu_pending($bulan,$tahun);
+        $data['nd_kamis'] = $this->m_admin->get_staff_nd_kamis_pending($bulan,$tahun);
+        $data['nd_jumat'] = $this->m_admin->get_staff_nd_jumat_pending($bulan,$tahun);
+        //PUTTY OCTAVIANY PURWADIPUTRI
+        $data['pt_senin'] = $this->m_admin->get_staff_pt_senin_pending($bulan,$tahun);
+        $data['pt_selasa'] = $this->m_admin->get_staff_pt_selasa_pending($bulan,$tahun);
+        $data['pt_rabu'] = $this->m_admin->get_staff_pt_rabu_pending($bulan,$tahun);
+        $data['pt_kamis'] = $this->m_admin->get_staff_pt_kamis_pending($bulan,$tahun);
+        $data['pt_jumat'] = $this->m_admin->get_staff_pt_jumat_pending($bulan,$tahun);
+        //RADEN SITI SARI DEWI
+        $data['rd_senin'] = $this->m_admin->get_staff_rd_senin_pending($bulan,$tahun);
+        $data['rd_selasa'] = $this->m_admin->get_staff_rd_selasa_pending($bulan,$tahun);
+        $data['rd_rabu'] = $this->m_admin->get_staff_rd_rabu_pending($bulan,$tahun);
+        $data['rd_kamis'] = $this->m_admin->get_staff_rd_kamis_pending($bulan,$tahun);
+        $data['rd_jumat'] = $this->m_admin->get_staff_rd_jumat_pending($bulan,$tahun);
+
+        $data['unit']=$this->m_user->get_unit_kerja();
+        $data['data']=$this->m_admin->get_dokumen_belumdibaca();
+        $data['sudah']=$this->m_admin->get_dokumen_sudahdibaca();
+        $data['title'] = "Dashboard";
+        $level = $this->session->userdata('level');
+        if ($level == "admin") {
+            $data['subtitle'] = "Admin";
+        } else{
+            $data['subtitle'] = "Staff";
+        }
+        $data['view_isi'] = "back_end/dashboard";
         $this->load->view('layout/template', $data);
     }
   
