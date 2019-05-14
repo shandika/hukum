@@ -2018,6 +2018,140 @@ class Model_admin extends CI_Model {
         }
     }
     //Akhir chart RADEN SITI SARI DEWI
+
+    //Chart EZRA LONTOH bulan Januari
+    function get_staff_ez_januari($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='1' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //Chart EZRA LONTOH bulan Februari
+    function get_staff_ez_februari($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='2' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart EZRA LONTOH bulan Maret
+     function get_staff_ez_maret($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='3' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart EZRA LONTOH bulan April
+     function get_staff_ez_april($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='4' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart EZRA LONTOH bulan Mei
+     function get_staff_ez_mei($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='5' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+    //Chart EZRA LONTOH bulan Juni
+    function get_staff_ez_juni($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='6' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //Chart EZRA LONTOH bulan Juli
+    function get_staff_ez_juli($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='7' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //Chart EZRA LONTOH bulan Agustus
+    function get_staff_ez_agustus($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='8' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //Chart EZRA LONTOH bulan September
+    function get_staff_ez_september($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='9' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //Chart EZRA LONTOH bulan Oktober
+    function get_staff_ez_oktober($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='10' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //Chart EZRA LONTOH bulan November
+    function get_staff_ez_november($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='11' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //Chart EZRA LONTOH bulan Desember
+    function get_staff_ez_desember($tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='EZRA LONTOH' AND MONTH(tgl_selesai_kerja)='12' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //akhir chart MOHAMAD ADITYA
     //Akhir chart Staff
 
     //Model Untuk Chart Staff Job Pending
@@ -2556,7 +2690,237 @@ class Model_admin extends CI_Model {
         }
     }
     //Akhir chart RADEN SITI SARI DEWI
-    //Akhir chart Staff
+    //Akhir chart Staff Pending
+
+    //Model Untuk Chart Staff Job Pending
+    //Chart MOHAMAD ADITYA Hari Senin
+    function get_staff_ad_senin_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='MOHAMAD ADITYA' AND DAYNAME(tgl_mulai_kerja)='Monday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //Chart MOHAMAD ADITYA Hari Selasa
+    function get_staff_ad_selasa_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='MOHAMAD ADITYA' AND DAYNAME(tgl_mulai_kerja)='Tuesday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart MOHAMAD ADITYA Hari Rabu
+     function get_staff_ad_rabu_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='MOHAMAD ADITYA' AND DAYNAME(tgl_mulai_kerja)='Wednesday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart MOHAMAD ADITYA Hari Kamis
+     function get_staff_ad_kamis_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='MOHAMAD ADITYA' AND DAYNAME(tgl_mulai_kerja)='Thursday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart MOHAMAD ADITYA Hari Jumat
+     function get_staff_ad_jumat_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='MOHAMAD ADITYA' AND DAYNAME(tgl_mulai_kerja)='Friday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+    //akhir chart MOHAMAD ADITYA
+
+    //Chart NADYA ARRIZKA HUTAMI Hari Senin
+    function get_staff_nd_senin_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='NADYA ARRIZKA HUTAMI' AND DAYNAME(tgl_mulai_kerja)='Monday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //Chart NADYA ARRIZKA HUTAMI Hari Selasa
+    function get_staff_nd_selasa_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='NADYA ARRIZKA HUTAMI' AND DAYNAME(tgl_mulai_kerja)='Tuesday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart NADYA ARRIZKA HUTAMI Hari Rabu
+     function get_staff_nd_rabu_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='NADYA ARRIZKA HUTAMI' AND DAYNAME(tgl_mulai_kerja)='Wednesday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart NADYA ARRIZKA HUTAMI Hari Kamis
+     function get_staff_nd_kamis_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='NADYA ARRIZKA HUTAMI' AND DAYNAME(tgl_mulai_kerja)='Thursday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart NADYA ARRIZKA HUTAMI Hari Jumat
+     function get_staff_nd_jumat_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='NADYA ARRIZKA HUTAMI' AND DAYNAME(tgl_mulai_kerja)='Friday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+    //akhir chart NADYA ARRIZKA HUTAMI
+
+    //Chart PUTTY OCTAVIANY PURWADIPUTRI Hari Senin
+    function get_staff_pt_senin_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='PUTTY OCTAVIANY PURWADIPUTRI' AND DAYNAME(tgl_mulai_kerja)='Monday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //Chart PUTTY OCTAVIANY PURWADIPUTRI Hari Selasa
+    function get_staff_pt_selasa_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='PUTTY OCTAVIANY PURWADIPUTRI' AND DAYNAME(tgl_mulai_kerja)='Tuesday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart PUTTY OCTAVIANY PURWADIPUTRI Hari Rabu
+     function get_staff_pt_rabu_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='PUTTY OCTAVIANY PURWADIPUTRI' AND DAYNAME(tgl_mulai_kerja)='Wednesday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart PUTTY OCTAVIANY PURWADIPUTRI Hari Kamis
+     function get_staff_pt_kamis_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='PUTTY OCTAVIANY PURWADIPUTRI' AND DAYNAME(tgl_mulai_kerja)='Thursday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart PUTTY OCTAVIANY PURWADIPUTRI Hari Jumat
+     function get_staff_pt_jumat_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='PUTTY OCTAVIANY PURWADIPUTRI' AND DAYNAME(tgl_mulai_kerja)='Friday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+    //akhir chart PUTTY OCTAVIANY PURWADIPUTRI
+
+    //Chart RADEN SITI SARI DEWI Hari Senin
+    function get_staff_rd_senin_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='RADEN SITI SARI DEWI' AND DAYNAME(tgl_mulai_kerja)='Monday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
+    }
+    //Chart RADEN SITI SARI DEWI Hari Selasa
+    function get_staff_rd_selasa_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='RADEN SITI SARI DEWI' AND DAYNAME(tgl_mulai_kerja)='Tuesday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart RADEN SITI SARI DEWI Hari Rabu
+     function get_staff_rd_rabu_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='RADEN SITI SARI DEWI' AND DAYNAME(tgl_mulai_kerja)='Wednesday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart RADEN SITI SARI DEWI Hari Kamis
+     function get_staff_rd_kamis_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='RADEN SITI SARI DEWI' AND DAYNAME(tgl_mulai_kerja)='Thursday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+     //Chart RADEN SITI SARI DEWI Hari Jumat
+     function get_staff_rd_jumat_pending($bulan,$tahun){
+        $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='RADEN SITI SARI DEWI' AND DAYNAME(tgl_mulai_kerja)='Friday' AND MONTHNAME(tgl_mulai_kerja)='$bulan' AND YEAR(tgl_mulai_kerja)='$tahun' AND status_pending='0' GROUP BY nama_staff");
+          
+         if($query->num_rows() > 0){
+             foreach($query->result() as $data){
+                 $hasil[] = $data;
+             }
+             return $hasil;
+         }
+     }
+    //akhir chart RADEN SITI SARI DEWI
+    //Akhir chart Staff Pending
 
     function get_chart_staff($kdn,$tahun){
         $query = $this->db->query("SELECT COUNT(nama_staff) AS jumlah FROM tbl_new_job WHERE nama_staff='$kdn' AND MONTH(tgl_selesai_kerja)='12' AND YEAR(tanggal_buat)='$tahun' AND status_pending='1' GROUP BY nama_staff");
