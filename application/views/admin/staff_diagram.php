@@ -383,7 +383,102 @@
                     }else{
                       $jumlah1_4_12[] = 0;
                     }
-                
+                //EZRA LONTOH Bulan Januari
+                if(!empty($ez_januari)) {
+                  foreach($ez_januari as $data){
+                      $jumlah1_5_1[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_1[] = 0;
+                    }
+                //EZRA LONTOH Bulan Februari
+                if(!empty($ez_februari)) {
+                  foreach($ez_februari as $data){
+                      $jumlah1_5_2[] = (float) $data->jumlah;
+                      }
+                    }else{
+                        $jumlah1_5_2[] = 0;
+                  }
+                //EZRA LONTOH Bulan Maret
+                if(!empty($ez_maret)) {
+                  foreach($ez_maret as $data){
+                      $jumlah1_5_3[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_3[] = 0;
+                    } 
+                //EZRA LONTOH Bulan April
+                if(!empty($ez_april)) {
+                foreach($ez_april as $data){
+                  $jumlah1_5_4[] = (float) $data->jumlah;
+                  }
+                }else{
+                  $jumlah1_5_4[] = 0;
+                }
+                //EZRA LONTOH Bulan Mei
+                if(!empty($ez_mei)) {
+                  foreach($ez_mei as $data){
+                      $jumlah1_5_5[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_5[] = 0;
+                    }
+                //EZRA LONTOH Bulan Juni
+                if(!empty($ez_juni)) {
+                  foreach($ez_juni as $data){
+                      $jumlah1_5_6[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_6[] = 0;
+                    }
+                //EZRA LONTOH Bulan Juli
+                if(!empty($ez_juli)) {
+                  foreach($ez_juli as $data){
+                      $jumlah1_5_7[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_7[] = 0;
+                    }
+                //EZRA LONTOH Bulan Agustus
+                if(!empty($ez_agustus)) {
+                  foreach($ez_agustus as $data){
+                      $jumlah1_5_8[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_8[] = 0;
+                    }
+                //EZRA LONTOH Bulan September
+                if(!empty($ez_september)) {
+                  foreach($ez_september as $data){
+                      $jumlah1_5_9[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_9[] = 0;
+                    }
+                //EZRA LONTOH Bulan Oktober
+                if(!empty($ez_oktober)) {
+                  foreach($ez_oktober as $data){
+                      $jumlah1_5_10[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_10[] = 0;
+                    }
+                //EZRA LONTOH Bulan November
+                if(!empty($ez_november)) {
+                  foreach($ez_november as $data){
+                      $jumlah1_5_11[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_11[] = 0;
+                    }
+                //EZRA LONTOH Bulan Desember
+                if(!empty($ez_desember)) {
+                  foreach($ez_desember as $data){
+                      $jumlah1_5_12[] = (float) $data->jumlah;
+                      }
+                    }else{
+                      $jumlah1_5_12[] = 0;
+                    }
             ?>
 
 <div class="container">
@@ -410,13 +505,13 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                  <form action="<?php echo base_url().'admin/c_admin/filter_tahun_staff_job/';?>" method="get">
+                  <form action="<?php echo base_url().'admin/c_admin/filter_tahun_staff/';?>" method="get">
                   <div class="col-md-2 col-sm-2 col-xs-2">
-                  <select class="form-control" name="tahun_filter">
+                  <select class="form-control" name="tahun_staff">
                   <option selected="" disabled="" value="0">--Pilih Tahun--</option>
                     <?php
                     $thn_skr = date('Y') - 5;
-                    $pilih2 = $_GET['tahun_filter'];
+                    $pilih2 = $_GET['tahun_staff'];
                     for($x = $thn_skr; $x < $thn_skr + 10; $x++){
                       ?>
                     <option value="<?php echo $x ?>" <?php if($x == $pilih2){ echo 'selected';} ?>><?php echo $x ?></option>
@@ -491,6 +586,13 @@ Highcharts.chart('graph', {
     }
   },
   series: [{
+    name: 'EZRA LONTOH',
+    data: [<?php echo json_encode($jumlah1_5_1);?>,<?php echo json_encode($jumlah1_5_2);?>,<?php echo json_encode($jumlah1_5_3);?>,
+           <?php echo json_encode($jumlah1_5_4);?>,<?php echo json_encode($jumlah1_5_5);?>,<?php echo json_encode($jumlah1_5_6);?>,
+           <?php echo json_encode($jumlah1_5_7);?>,<?php echo json_encode($jumlah1_5_8);?>,<?php echo json_encode($jumlah1_5_9);?>,
+           <?php echo json_encode($jumlah1_5_10);?>,<?php echo json_encode($jumlah1_5_11);?>,<?php echo json_encode($jumlah1_5_12);?>
+           ]
+  }, {
     name: 'MOHAMAD ADITYA',
     data: [<?php echo json_encode($jumlah1_1_1);?>,<?php echo json_encode($jumlah1_1_2);?>,<?php echo json_encode($jumlah1_1_3);?>,
            <?php echo json_encode($jumlah1_1_4);?>,<?php echo json_encode($jumlah1_1_5);?>,<?php echo json_encode($jumlah1_1_6);?>,
