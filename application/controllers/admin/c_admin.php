@@ -209,14 +209,15 @@ class C_admin extends CI_Controller {
         $data['sp_desember'] = $this->m_admin->get_unit_sp_desember($tahun);
 
 		$data['unit']=$this->m_user->get_unit_kerja();
-		$data['data']=$this->m_admin->get_all_dokumen();
-		$data['title'] = "Dashboard";
+        $data['data']=$this->m_admin->get_dokumen_belumdibaca();
+        $data['sudah']=$this->m_admin->get_dokumen_sudahdibaca();
+        $data['title'] = "Dashboard";
         $level = $this->session->userdata('level');
         if ($level == "admin") {
-        	$data['subtitle'] = "Admin";
+            $data['subtitle'] = "Admin";
         } else{
-        	$data['subtitle'] = "Staff";
-    	}
+            $data['subtitle'] = "Staff";
+        }
         $data['view_isi'] = "back_end/dashboard";
         $this->load->view('layout/template', $data);
     }
