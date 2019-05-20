@@ -464,13 +464,13 @@ class C_admin extends CI_Controller {
                 redirect('dashboard');          
         }
     }elseif(isset($_POST['Finish'])) {
-        $kode=$kodevoucher;
-        $tglselesai=date('Y-m-d h:i:s');
-        $catatanadmin=strip_tags($this->input->post('catatanadmin'));
-        $admin=$this->session->userdata('nama_user');
-        $this->m_admin->finish_dokumen($kode,$catatanadmin,$tglselesai,$admin);
-        echo $this->session->set_flashdata('msg','success-finish');
-        redirect('dashboard');
+            $kode=$kodevoucher;
+            $tglselesai=date('Y-m-d h:i:s');
+            $catatanadmin=strip_tags($this->input->post('catatanadmin'));
+            $admin=$this->session->userdata('nama_user');
+            $this->m_admin->finish_dokumen($kode,$catatanadmin,$tglselesai,$admin);
+            echo $this->session->set_flashdata('msg','success-finish');
+            redirect('dashboard');
     }elseif (isset($_POST['Reset'])) {
         $kode=$kodevoucher;
         $tanggal_mulai = date('Y-m-d h:i:s');
@@ -585,6 +585,180 @@ class C_admin extends CI_Controller {
             $pdf->Cell(49,6,'Tanggal Mengirim Dokumen   : '.$row->tanggal_buat,0,1);
             $pdf->Cell(47,6,'Perkiraan Selesai                    : '.$row->tgl_selesai_kerja,0,1);
         }
+        // Line break
+        $pdf->Ln(20);
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Arial','B',16);
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(6,7,'',0,1);
+        $pdf->SetFont('Arial','B',10);
+        $pdf->Cell(26,6,'Kode Voucher',1,0);
+        $pdf->Cell(45,6,'Tanggal Masuk',1,0);
+        $pdf->Cell(68,6,'Catatan User',1,0);
+        $pdf->Cell(68,6,'Catatan Admin',1,0);
+        $pdf->Cell(68,6,'Catatan Staff',1,0);
+        $pdf->Ln(6);
+        $pdf->SetFont('Arial','',10);
+        $kode=$this->uri->segment(4);
+        $data['catatan']=$this->m_admin->catatan($kode);
+        foreach($data['catatan']->result() as $row){
+            $cellWidth=68; //lebar sel
+            $cellHeight=6; //tinggi sel satu baris normal
+            $cellWidth2=68; //lebar sel
+            $cellHeight2=6; //tinggi sel satu baris normal
+            $cellWidth3=68; //lebar sel
+            $cellHeight3=6; //tinggi sel satu baris normal
+
+            //periksa apakah teksnya melibihi kolom?
+            if($pdf->GetStringWidth($row->catatan_user) < $cellWidth){
+                //jika tidak, maka tidak melakukan apa-apa
+                $line=1;
+            }else{
+                //jika ya, maka hitung ketinggian yang dibutuhkan untuk sel akan dirapikan
+                //dengan memisahkan teks agar sesuai dengan lebar sel
+                //lalu hitung berapa banyak baris yang dibutuhkan agar teks pas dengan sel
+                
+                $textLength1=strlen($row->catatan_user);    //total panjang teks
+                $errMargin1=5;       //margin kesalahan lebar sel, untuk jaga-jaga
+                $startChar1=0;       //posisi awal karakter untuk setiap baris
+                $maxChar1=0;         //karakter maksimum dalam satu baris, yang akan ditambahkan nanti
+                $textArray1=array(); //untuk menampung data untuk setiap baris
+                $tmpString1="";      //untuk menampung teks untuk setiap baris (sementara)
+                
+                while($startChar1 < $textLength1){ //perulangan sampai akhir teks
+                    //perulangan sampai karakter maksimum tercapai
+                    while( 
+                    $pdf->GetStringWidth( $tmpString1 ) < ($cellWidth-$errMargin1) &&
+                    ($startChar1+$maxChar1) < $textLength1 ) {
+                        $maxChar1++;
+                        $tmpString1=substr($row->catatan_user,$startChar1,$maxChar1);
+                    }
+                    //pindahkan ke baris berikutnya
+                    $startChar1=$startChar1+$maxChar1;
+                    //kemudian tambahkan ke dalam array sehingga kita tahu berapa banyak baris yang dibutuhkan
+                    array_push($textArray1,$tmpString1);
+                    //reset variabel penampung
+                    $maxChar1=0;
+                    $tmpString1='';
+                    
+                }
+                //dapatkan jumlah baris
+                $line=count($textArray1);
+            }
+            
+            //periksa apakah teksnya melibihi kolom?
+            if($pdf->GetStringWidth($row->catatan_admin) < $cellWidth2){
+                //jika tidak, maka tidak melakukan apa-apa
+                $line2=1;
+            }else{
+                //jika ya, maka hitung ketinggian yang dibutuhkan untuk sel akan dirapikan
+                //dengan memisahkan teks agar sesuai dengan lebar sel
+                //lalu hitung berapa banyak baris yang dibutuhkan agar teks pas dengan sel
+                
+                $textLength2=strlen($row->catatan_admin);    //total panjang teks
+                $errMargin2=5;       //margin kesalahan lebar sel, untuk jaga-jaga
+                $startChar2=0;       //posisi awal karakter untuk setiap baris
+                $maxChar2=0;         //karakter maksimum dalam satu baris, yang akan ditambahkan nanti
+                $textArray2=array(); //untuk menampung data untuk setiap baris
+                $tmpString2="";      //untuk menampung teks untuk setiap baris (sementara)
+                
+                while($startChar2 < $textLength2){ //perulangan sampai akhir teks
+                    //perulangan sampai karakter maksimum tercapai
+                    while( 
+                    $pdf->GetStringWidth( $tmpString2 ) < ($cellWidth2-$errMargin2) &&
+                    ($startChar2+$maxChar2) < $textLength2 ) {
+                        $maxChar2++;
+                        $tmpString2=substr($row->catatan_admin,$startChar2,$maxChar2);
+                    }
+                    //pindahkan ke baris berikutnya
+                    $startChar2=$startChar2+$maxChar2;
+                    //kemudian tambahkan ke dalam array sehingga kita tahu berapa banyak baris yang dibutuhkan
+                    array_push($textArray2,$tmpString2);
+                    //reset variabel penampung
+                    $maxChar2=0;
+                    $tmpString2='';
+                    
+                }
+                //dapatkan jumlah baris
+                $line2=count($textArray2);
+            }
+            
+            //periksa apakah teksnya melibihi kolom?
+            if($pdf->GetStringWidth($row->catatan_staff) < $cellWidth3){
+                //jika tidak, maka tidak melakukan apa-apa
+                $line=1;
+            }else{
+                //jika ya, maka hitung ketinggian yang dibutuhkan untuk sel akan dirapikan
+                //dengan memisahkan teks agar sesuai dengan lebar sel
+                //lalu hitung berapa banyak baris yang dibutuhkan agar teks pas dengan sel
+                
+                $textLength3=strlen($row->catatan_staff);    //total panjang teks
+                $errMargin3=5;       //margin kesalahan lebar sel, untuk jaga-jaga
+                $startChar3=0;       //posisi awal karakter untuk setiap baris
+                $maxChar3=0;         //karakter maksimum dalam satu baris, yang akan ditambahkan nanti
+                $textArray3=array(); //untuk menampung data untuk setiap baris
+                $tmpString3="";      //untuk menampung teks untuk setiap baris (sementara)
+                
+                while($startChar3 < $textLength3){ //perulangan sampai akhir teks
+                    //perulangan sampai karakter maksimum tercapai
+                    while( 
+                    $pdf->GetStringWidth( $tmpString3 ) < ($cellWidth3-$errMargin3) &&
+                    ($startChar3+$maxChar3) < $textLength3 ) {
+                        $maxChar3++;
+                        $tmpString3=substr($row->catatan_staff,$startChar3,$maxChar3);
+                    }
+                    //pindahkan ke baris berikutnya
+                    $startChar3=$startChar3+$maxChar3;
+                    //kemudian tambahkan ke dalam array sehingga kita tahu berapa banyak baris yang dibutuhkan
+                    array_push($textArray3,$tmpString3);
+                    //reset variabel penampung
+                    $maxChar3=0;
+                    $tmpString3='';
+                    
+                }
+                //dapatkan jumlah baris
+                $line=count($textArray3);
+            }
+
+            //tulis selnya
+            $pdf->SetFillColor(255,255,255);
+            $pdf->Cell(26,($line2 * $cellHeight),$row->kode_voucher,1,0); //sesuaikan ketinggian dengan jumlah garis
+            $pdf->Cell(45,($line2 * $cellHeight),$row->tgl_masuk,1,0); //sesuaikan ketinggian dengan jumlah garis
+            //memanfaatkan MultiCell sebagai ganti Cell
+            //atur posisi xy untuk sel berikutnya menjadi di sebelahnya.
+            //ingat posisi x dan y sebelum menulis MultiCell
+            $xPos=$pdf->GetX();
+            $yPos=$pdf->GetY();
+            $pdf->MultiCell($cellWidth,($line2 * $cellHeight ),$row->catatan_user,1);
+            
+            //kembalikan posisi untuk sel berikutnya di samping MultiCell 
+            //dan offset x dengan lebar MultiCell
+            $pdf->SetXY($xPos + $cellWidth , $yPos);
+            
+            //memanfaatkan MultiCell sebagai ganti Cell
+            //atur posisi xy untuk sel berikutnya menjadi di sebelahnya.
+            //ingat posisi x dan y sebelum menulis MultiCell
+            $xPos2=$pdf->GetX();
+            $yPos2=$pdf->GetY();
+            $pdf->MultiCell($cellWidth2,$cellHeight2,$row->catatan_admin,1);
+            
+            //kembalikan posisi untuk sel berikutnya di samping MultiCell 
+            //dan offset x dengan lebar MultiCell
+            $pdf->SetXY($xPos2 + $cellWidth2 , $yPos2);
+            
+            //memanfaatkan MultiCell sebagai ganti Cell
+            //atur posisi xy untuk sel berikutnya menjadi di sebelahnya.
+            //ingat posisi x dan y sebelum menulis MultiCell
+            $xPos3=$pdf->GetX();
+            $yPos3=$pdf->GetY();
+            $pdf->MultiCell($cellWidth3,($line2 * $cellHeight3),$row->catatan_staff,1);
+            
+            //kembalikan posisi untuk sel berikutnya di samping MultiCell 
+            //dan offset x dengan lebar MultiCell
+            $pdf->SetXY($xPos3 + $cellWidth3 , $yPos3);
+            $pdf->Ln(6);
+        }
+        
         //print date
         $pdf->Cell(750,7,'Printed'.' '.date('Y-m-d h:i:s'),0,1,'C');
         $pdf->SetFont('Arial','',9);
