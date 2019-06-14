@@ -63,5 +63,55 @@ class C_staff extends CI_Controller {
         $data['view_isi'] = "staff/detail_job_status";
         $this->load->view('layout/template',$data);
     }
+
+    public function filter_tahun_staff(){
+        $nama = $this->session->userdata('nama_user');
+        $tahun=$this->input->get('tahun_staff');
+        //Staff per tahun
+        $data['st_januari'] = $this->m_staff->get_staff_ad_januari($tahun,$nama);
+        $data['st_februari'] = $this->m_staff->get_staff_ad_februari($tahun,$nama);
+        $data['st_maret'] = $this->m_staff->get_staff_ad_maret($tahun,$nama);
+        $data['st_april'] = $this->m_staff->get_staff_ad_april($tahun,$nama);
+        $data['st_mei'] = $this->m_staff->get_staff_ad_mei($tahun,$nama);
+        $data['st_juni'] = $this->m_staff->get_staff_ad_juni($tahun,$nama);
+        $data['st_juli'] = $this->m_staff->get_staff_ad_juli($tahun,$nama);
+        $data['st_agustus'] = $this->m_staff->get_staff_ad_agustus($tahun,$nama);
+        $data['st_september'] = $this->m_staff->get_staff_ad_september($tahun,$nama);
+        $data['st_oktober'] = $this->m_staff->get_staff_ad_oktober($tahun,$nama);
+        $data['st_november'] = $this->m_staff->get_staff_ad_november($tahun,$nama);
+        $data['st_desember'] = $this->m_staff->get_staff_ad_desember($tahun,$nama);
+
+        $data['title'] = "Dashboard";
+        $level = $this->session->userdata('level');
+        if ($level == "admin") {
+            $data['subtitle'] = "Admin";
+        } else{
+            $data['subtitle'] = "Staff";
+        }
+        $data['view_isi'] = "back_end/dashboard";
+        $this->load->view('layout/template', $data);
+    }
+
+    public function filter_bulan_staff() {
+        $nama = $this->session->userdata('nama_user');
+        $bulan=$this->input->get('bulan_filter');
+        $tahun=date('Y');
+        //Staff
+        $data['sth_senin'] = $this->m_staff->get_staff_ad_senin($bulan,$tahun,$nama);
+        $data['sth_selasa'] = $this->m_staff->get_staff_ad_selasa($bulan,$tahun,$nama);
+        $data['sth_rabu'] = $this->m_staff->get_staff_ad_rabu($bulan,$tahun,$nama);
+        $data['sth_kamis'] = $this->m_staff->get_staff_ad_kamis($bulan,$tahun,$nama);
+        $data['sth_jumat'] = $this->m_staff->get_staff_ad_jumat($bulan,$tahun,$nama);
+
+        $data['title'] = "Dashboard";
+        $level = $this->session->userdata('level');
+        if ($level == "admin") {
+            $data['subtitle'] = "Admin";
+        } else{
+            $data['subtitle'] = "Staff";
+        }
+        $data['view_isi'] = "back_end/dashboard";
+        $this->load->view('layout/template', $data);
+    }
 }
 ?>
